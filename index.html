@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu Example</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app" id="app">
+    <div class="corner-title corner-top-right">Jack</div>
+    <div class="corner-title corner-bottom-left">Long</div>
+    <label for="menu-toggle" class="menu-label">
+      <input
+        type="checkbox"
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-label="Toggle menu"
+      />
+      <span class="menu-label-close">close</span>
+      <span class="menu-label-open">menu</span>
+    </label>
+
+    <div class="menu-overlay" id="menu-overlay">
+      <nav class="menu-nav">
+        <ul>
+          <li><a href="photo.html">Photo</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="exhibits.html">Exhibits</a></li>
+          <li><a href="congresses.html">Congresses</a></li>
+          <li><a href="sports.html">Sports</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <script>
+    const app = document.getElementById("app");
+    const toggle = document.getElementById("menu-toggle");
+    const label = document.querySelector(".menu-label");
+    const overlay = document.getElementById("menu-overlay");
+
+    const unlockHover = () => app.classList.remove("hover-locked");
+
+    toggle.addEventListener("change", () => {
+      if (!toggle.checked) {
+        app.classList.add("hover-locked");
+      } else {
+        unlockHover();
+      }
+    });
+
+    label.addEventListener("mouseleave", unlockHover);
+    overlay.addEventListener("mouseleave", unlockHover);
+  </script>
+</body>
+</html>

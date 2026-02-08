@@ -1,0 +1,11 @@
+{
+  "name": "art-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "images": "node scripts/build-images.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.4"
+  }
+}

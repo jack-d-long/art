@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo</title>
+  <style>
+    :root {
+      --ink: #333A3F;
+      --paper: #fff;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      font-size: 48px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #f2f2f2;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Photo</h1>
+  <div class="grid">
+    <img src="assets/optimized/lake/img04-1920.avif" alt="img04" />
+    <img src="assets/optimized/lake/img16-1920.avif" alt="img16" />
+    <img src="assets/optimized/lake/img26-1920.avif" alt="img26" />
+    <img src="assets/optimized/lake/lake-08-1920.avif" alt="lake-08" />
+    <img src="assets/optimized/last_of/img01-2560.avif" alt="img01" />
+    <img src="assets/optimized/last_of/img02-2560.avif" alt="img02" />
+    <img src="assets/optimized/last_of/img03-2560.avif" alt="img03" />
+    <img src="assets/optimized/last_of/img04-2560.avif" alt="img04" />
+    <img src="assets/optimized/last_of/img05-1920.avif" alt="img05" />
+    <img src="assets/optimized/last_of/img06-2560.avif" alt="img06" />
+    <img src="assets/optimized/last_of/img07-2560.avif" alt="img07" />
+    <img src="assets/optimized/last_of/img08-2560.avif" alt="img08" />
+    <img src="assets/optimized/last_of/img09-1440.avif" alt="img09" />
+    <img src="assets/optimized/last_of/img10-2560.avif" alt="img10" />
+    <img src="assets/optimized/last_of/img11-2560.avif" alt="img11" />
+    <img src="assets/optimized/last_of/img12-2560.avif" alt="img12" />
+    <img src="assets/optimized/last_of/img13-1920.avif" alt="img13" />
+    <img src="assets/optimized/last_of/img14-1920.avif" alt="img14" />
+    <img src="assets/optimized/last_of/img15-1920.avif" alt="img15" />
+  </div>
+</body>
+</html>

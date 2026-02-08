@@ -1,0 +1,23 @@
+:root {
+  --ink: #333A3F;
+  --paper: #fff;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: grid;
+  place-items: center;
+  font-family: sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+h1 {
+  margin: 0;
+  font-size: 48px;
+}

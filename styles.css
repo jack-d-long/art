@@ -1,0 +1,162 @@
+:root {
+  --ink: #212121;
+  --paper: #F1F1F1;
+}
+
+html {
+  background-color: var(--ink);
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  min-height: calc(100vh - 32px);
+  align-items: flex-start;
+  padding: 32px 32px 0;
+  font-family: sans-serif;
+  position: relative;
+}
+
+.corner-title {
+  position: fixed;
+  font-weight: 700;
+  font-size: 120px;
+  color: var(--paper);
+  line-height: 1;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.corner-top-right {
+  top: 50px;
+  right: 50px;
+}
+
+.corner-bottom-left {
+  bottom: 50px;
+  left: 50px;
+}
+
+.menu-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.menu-label {
+  position: relative;
+  z-index: 30;
+  color: var(--paper);
+  cursor: pointer;
+  font-weight: bold;
+  display: grid;
+  transition: color 0.2s ease 0.3s;
+}
+
+.app:has(.menu-toggle:checked) .menu-label,
+.app:not(.hover-locked):has(.menu-label:hover) .menu-label,
+.app:not(.hover-locked):has(.menu-overlay:hover) .menu-label {
+  color: var(--ink);
+  transition-delay: 0s;
+}
+
+.menu-label span {
+  grid-column: 1;
+  grid-row: 1;
+  transition: opacity 0.2s ease;
+}
+
+.menu-label .menu-label-close {
+  opacity: 0;
+}
+
+.menu-label .menu-label-open {
+  opacity: 1;
+}
+
+.app:has(.menu-toggle:checked) .menu-label-close,
+.app:not(.hover-locked):has(.menu-label:hover) .menu-label-close,
+.app:not(.hover-locked):has(.menu-overlay:hover) .menu-label-close {
+  opacity: 1;
+}
+
+.app:has(.menu-toggle:checked) .menu-label-open,
+.app:not(.hover-locked):has(.menu-label:hover) .menu-label-open,
+.app:not(.hover-locked):has(.menu-overlay:hover) .menu-label-open {
+  opacity: 0;
+}
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  clip-path: circle(0 at 0 0);
+  transition: clip-path 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.app:has(.menu-toggle:checked) .menu-overlay,
+.app:not(.hover-locked):has(.menu-label:hover) .menu-overlay,
+.app:not(.hover-locked):has(.menu-overlay:hover) .menu-overlay {
+  clip-path: circle(calc(1.42 * 100vmax) at 0 0);
+  transition: clip-path 0.5s ease-in-out;
+  pointer-events: auto;
+}
+
+.menu-nav {
+  position: fixed;
+  inset: 0;
+  background-color: var(--paper);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: 1;
+  /* could be calculated with js, for dynamic dimension that respect the navigation dimensions, but i hardcoded it for now */
+  clip-path: polygon(0% 4%, 64% 100%, 100% 100%, 100% 38%, 12% 0%, 0% 0%);
+}
+
+.menu-corner {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: min(26vw, 280px);
+  height: auto;
+  padding: 24px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 2;
+}
+
+.app:has(.menu-toggle:checked) .menu-corner,
+.app:not(.hover-locked):has(.menu-label:hover) .menu-corner,
+.app:not(.hover-locked):has(.menu-overlay:hover) .menu-corner {
+  opacity: 1;
+}
+
+.menu-nav ul {
+  margin: 0;
+  padding: 32px;
+  list-style: none;
+  text-align: right;
+  color: var(--ink);
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.menu-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.menu-nav a:hover {
+  color: var(--ink);
+}
