@@ -1,0 +1,100 @@
+html {
+  background-color: #475f94;
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  min-height: calc(100vh - 32px);
+  align-items: flex-start;
+  padding: 32px 32px 0;
+  font-family: sans-serif;
+}
+
+.menu-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.menu-label {
+  position: relative;
+  z-index: 30;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  display: grid;
+}
+
+.menu-label span {
+  grid-column: 1;
+  grid-row: 1;
+  transition: opacity 0.2s ease;
+}
+
+.menu-label .menu-label-close {
+  opacity: 0;
+}
+
+.menu-label .menu-label-open {
+  opacity: 1;
+}
+
+.app:has(.menu-toggle:checked) .menu-label-close {
+  opacity: 1;
+}
+
+.app:has(.menu-toggle:checked) .menu-label-open {
+  opacity: 0;
+}
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  clip-path: circle(0 at 0 0);
+  transition: clip-path 0.3s ease-in-out;
+}
+
+.app:has(.menu-toggle:checked) .menu-overlay {
+  clip-path: circle(calc(1.42 * 100vmax) at 0 0);
+  transition: clip-path 0.5s ease-in-out;
+}
+
+.menu-nav {
+  position: fixed;
+  inset: 0;
+  background-color: #fa4224;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  /* could be calculated with js, for dynamic dimension that respect the navigation dimensions, but i hardcoded it for now */
+  clip-path: polygon(0% 4%, 64% 100%, 100% 100%, 100% 38%, 12% 0%, 0% 0%);
+}
+
+.menu-nav ul {
+  margin: 0;
+  padding: 32px;
+  list-style: none;
+  text-align: right;
+  color: white;
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.menu-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.menu-nav a:hover {
+  color: black;
+}
