@@ -1,6 +1,9 @@
 :root {
   --ink: #151515;
   --paper: #F1F1F1;
+  --bg-texture-image: url("assets/index/texture1.jpeg");
+  --bg-texture-opacity: 0.18;
+  --menu-reveal-shape: polygon(0% 4%, 64% 100%, 100% 100%, 100% 38%, 12% 0%, 0% 0%);
 }
 
 html {
@@ -19,6 +22,18 @@ body {
   font-family: sans-serif;
   position: relative;
   isolation: isolate;
+}
+
+.app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: var(--bg-texture-image);
+  background-position: center;
+  background-size: cover;
+  opacity: var(--bg-texture-opacity);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .corner-title {
@@ -57,11 +72,18 @@ body {
 .menu-label {
   position: relative;
   z-index: 30;
-  color: #fff;
-  mix-blend-mode: difference;
+  color: var(--paper);
   cursor: pointer;
   font-weight: bold;
   display: grid;
+  transition: color 0.2s ease 0.3s;
+}
+
+.app:has(.menu-toggle:checked) .menu-label,
+.app:not(.hover-locked):has(.menu-label:hover) .menu-label,
+.app:not(.hover-locked):has(.menu-overlay:hover) .menu-label {
+  color: var(--ink);
+  transition-delay: 0s;
 }
 
 .menu-label span {
@@ -96,6 +118,17 @@ body {
   clip-path: circle(0 at 0 0);
   transition: clip-path 0.3s ease-in-out;
   pointer-events: none;
+  z-index: 5;
+}
+
+.menu-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  mix-blend-mode: difference;
+  clip-path: var(--menu-reveal-shape);
+  pointer-events: none;
 }
 
 .app:has(.menu-toggle:checked) .menu-overlay,
@@ -109,13 +142,11 @@ body {
 .menu-nav {
   position: fixed;
   inset: 0;
-  background-color: var(--paper);
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
   z-index: 1;
-  /* could be calculated with js, for dynamic dimension that respect the navigation dimensions, but i hardcoded it for now */
-  clip-path: polygon(0% 4%, 64% 100%, 100% 100%, 100% 38%, 12% 0%, 0% 0%);
+  clip-path: var(--menu-reveal-shape);
 }
 
 .menu-corner {
@@ -138,6 +169,8 @@ body {
 }
 
 .menu-nav ul {
+  position: relative;
+  z-index: 1;
   margin: 0;
   padding: 32px;
   list-style: none;
@@ -153,5 +186,5 @@ body {
 }
 
 .menu-nav a:hover {
-  color: var(--ink);
+  opacity: 0.75;
 }
