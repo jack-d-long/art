@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Halftone</title>
+  <style>
+    :root {
+      --ink: #333a3f;
+      --paper: #fff;
+      --dark-bg: #07090b;
+      --frame: min(calc(100vw - 1.5rem), 30rem);
+      --gap: 0.5rem;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    body {
+      font: 1em/1.125 trebuchet ms, verdana, sans-serif;
+      text-align: center;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 1rem 0 2rem;
+    }
+
+    article {
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.75rem;
+      line-height: 2;
+    }
+
+    section {
+      display: grid;
+      place-content: center;
+      gap: 0 var(--gap);
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    canvas {
+      width: var(--frame);
+      height: auto;
+      display: block;
+    }
+
+    @media (min-width: 60.5em) {
+      h4 {
+        grid-row: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="standard">
+    <h3>Standard Filtered Halftone</h3>
+    <section>
+      <h4>Original image</h4>
+      <canvas id="orig-standard" aria-label="Original image standard"></canvas>
+      <h4>Halftone result</h4>
+      <canvas id="half-standard" aria-label="Standard halftone"></canvas>
+    </section>
+  </article>
+
+  <article class="dark">
+    <h3>White Halftone on Dark Background</h3>
+    <section>
+      <h4>Original image</h4>
+      <canvas id="orig-dark" aria-label="Original image dark"></canvas>
+      <h4>Halftone result</h4>
+      <canvas id="half-dark" aria-label="Dark halftone"></canvas>
+    </section>
+  </article>
+
+  <p id="render-note" style="margin-top:0.75rem;font-size:0.9rem;color:#6b7075;"></p>
+
+  <script>
+    (() => {
+      const SOURCE_PATH = "./assets/index/Subject.png";
+      const DOT_CELL = 8;
+      const DOT_RADIUS = DOT_CELL * 0.48;
+      const MASK_SPREAD = DOT_CELL * 0.5;
+      const CONTRAST_FILTER = "contrast(1900%)";
+
+      const canvases = {
+        origStandard: document.getElementById("orig-standard"),
+        halfStandard: document.getElementById("half-standard"),
+        origDark: document.getElementById("orig-dark"),
+        halfDark: document.getElementById("half-dark")
+      };
+      const renderNote = document.getElementById("render-note");
+
+      const img = new Image();
+      img.onload = () => renderAll();
+      img.onerror = () => {
+        renderNote.textContent = "Image failed to load from ./assets/index/Subject.png.";
+      };
+      img.src = SOURCE_PATH;
+      window.addEventListener("resize", debounce(renderAll, 120));
+
+      function renderAll() {
+        if (!img.naturalWidth || !img.naturalHeight) return;
+
+        const maxWidth = Math.min(window.innerWidth - 24, 480);
+        const width = Math.max(120, Math.round(maxWidth));
+        const height = Math.round((img.naturalHeight / img.naturalWidth) * width);
+
+        setupCanvas(canvases.origStandard, width, height);
+        setupCanvas(canvases.halfStandard, width, height);
+        setupCanvas(canvases.origDark, width, height);
+        setupCanvas(canvases.halfDark, width, height);
+
+        drawOriginal(canvases.origStandard, width, height, "#ffffff");
+        drawOriginal(canvases.origDark, width, height, "#07090b");
+
+        renderHalftone(canvases.halfStandard, width, height, {
+          bg: "#ffffff",
+          toneFilter: "blur(3px) brightness(0.9) grayscale(1)",
+          invertFinal: false
+        });
+
+        renderHalftone(canvases.halfDark, width, height, {
+          bg: "#07090b",
+          toneFilter: "invert(1) blur(3px) brightness(0.9) grayscale(1)",
+          invertFinal: true
+        });
+
+        renderNote.textContent = "";
+      }
+
+      function setupCanvas(canvas, width, height) {
+        canvas.width = width;
+        canvas.height = height;
+      }
+
+      function drawOriginal(canvas, width, height, bg) {
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = bg;
+        ctx.fillRect(0, 0, width, height);
+        ctx.drawImage(img, 0, 0, width, height);
+      }
+
+      function renderHalftone(canvas, width, height, options) {
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = options.bg;
+        ctx.fillRect(0, 0, width, height);
+        const dotLayer = buildDotLayer(width, height);
+        const toneLayer = buildToneLayer(width, height, options.toneFilter);
+        const mixedLayer = mixHalftoneLayers(dotLayer, toneLayer, width, height);
+        const contrastedLayer = applyFilterLayer(mixedLayer, width, height, CONTRAST_FILTER);
+        const finalLayer = options.invertFinal
+          ? applyFilterLayer(contrastedLayer, width, height, "invert(1)")
+          : contrastedLayer;
+        const expandedMask = buildExpandedAlphaMask(width, height, MASK_SPREAD);
+
+        const maskedLayer = document.createElement("canvas");
+        maskedLayer.width = width;
+        maskedLayer.height = height;
+        const mctx = maskedLayer.getContext("2d");
+        mctx.drawImage(finalLayer, 0, 0);
+        mctx.globalCompositeOperation = "destination-in";
+        mctx.drawImage(expandedMask, 0, 0);
+        mctx.globalCompositeOperation = "source-over";
+
+        ctx.drawImage(maskedLayer, 0, 0);
+      }
+
+      function buildDotLayer(width, height) {
+        const layer = document.createElement("canvas");
+        layer.width = width;
+        layer.height = height;
+        const lctx = layer.getContext("2d");
+        const pattern = buildRadialDotPattern(DOT_CELL);
+        lctx.fillStyle = pattern;
+        lctx.fillRect(0, 0, width, height);
+        return layer;
+      }
+
+      function buildRadialDotPattern(cell) {
+        const p = document.createElement("canvas");
+        p.width = cell;
+        p.height = cell;
+        const pctx = p.getContext("2d");
+        const g = pctx.createRadialGradient(
+          cell / 2,
+          cell / 2,
+          0,
+          cell / 2,
+          cell / 2,
+          DOT_RADIUS
+        );
+        g.addColorStop(0, "#000");
+        g.addColorStop(1, "#fff");
+        pctx.fillStyle = g;
+        pctx.fillRect(0, 0, cell, cell);
+        return pctx.createPattern(p, "repeat");
+      }
+
+      function buildToneLayer(width, height, filter) {
+        const layer = document.createElement("canvas");
+        layer.width = width;
+        layer.height = height;
+        const lctx = layer.getContext("2d");
+        lctx.filter = filter;
+        lctx.drawImage(img, 0, 0, width, height);
+        lctx.filter = "none";
+        return layer;
+      }
+
+      function mixHalftoneLayers(dotLayer, toneLayer, width, height) {
+        const layer = document.createElement("canvas");
+        layer.width = width;
+        layer.height = height;
+        const lctx = layer.getContext("2d");
+        lctx.drawImage(dotLayer, 0, 0);
+        lctx.globalCompositeOperation = "screen";
+        lctx.drawImage(toneLayer, 0, 0);
+        lctx.globalCompositeOperation = "source-over";
+        return layer;
+      }
+
+      function applyFilterLayer(sourceLayer, width, height, filter) {
+        const layer = document.createElement("canvas");
+        layer.width = width;
+        layer.height = height;
+        const lctx = layer.getContext("2d");
+        lctx.filter = filter;
+        lctx.drawImage(sourceLayer, 0, 0);
+        lctx.filter = "none";
+        return layer;
+      }
+
+      function buildExpandedAlphaMask(width, height, spread) {
+        const mask = document.createElement("canvas");
+        mask.width = width;
+        mask.height = height;
+        const mctx = mask.getContext("2d");
+        const offsets = [
+          [0, 0],
+          [spread, 0], [-spread, 0], [0, spread], [0, -spread],
+          [spread, spread], [spread, -spread], [-spread, spread], [-spread, -spread]
+        ];
+        for (const [dx, dy] of offsets) {
+          mctx.drawImage(img, dx, dy, width, height);
+        }
+        return mask;
+      }
+
+      function debounce(fn, wait) {
+        let t = null;
+        return () => {
+          clearTimeout(t);
+          t = setTimeout(fn, wait);
+        };
+      }
+    })();
+  </script>
+</body>
+</html>

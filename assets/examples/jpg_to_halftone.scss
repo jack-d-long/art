@@ -1,0 +1,74 @@
+$a: 2;
+$b: 3;
+$bg-0: url(https://assets.codepen.io/2017/portrait_woman.jpg) 50%/ cover;
+$bg-1: url(https://assets.codepen.io/2017/portrait_tiger.jpg) 50%/ cover;
+$g: .5em;
+$w: 30em;
+$bp-max: 2*$w + $g;
+$d: 6px;
+
+* { margin: 0 }
+
+body {
+  font: 1em/1.125 trebuchet ms, verdana, sans-serif;
+  text-align: center
+}
+
+article { margin-bottom: $g }
+
+h3 { font-size: 1.75em; line-height: 2 }
+
+section {
+  --w: Min(calc(100vw - 1.5em), #{$w});
+  --h: calc(#{$b/$a}*var(--w));
+  display: grid;
+  place-content: center;
+  grid-gap: 0 $g;
+  --dots: radial-gradient(circle, #000, #fff) 0 0/#{$d $d} space;
+}
+
+h4 {
+  font-size: 1.25em;
+  text-transform: uppercase;
+  
+  @media (min-width: #{$bp-max}) { grid-row: 1 }
+}
+
+div {
+  width: var(--w);
+  height: var(--h);
+  background: var(--lyr0, var(--img)) var(--sep, #{unquote(' ')}) var(--lyr1, #{unquote(' ')});
+}
+
+.halftone {
+  --lyr1: var(--dots);
+	overflow: hidden;
+  filter: contrast(19)
+}
+
+.noproc {
+  --img: #{$bg-0};
+  
+  .halftone {
+    --sep: #{unquote(',')};
+    background-blend-mode: screen
+  }
+}
+
+.filter {
+  --img: #{$bg-1};
+  
+  .halftone {
+    --lyr0: #{unquote(' ')};
+    position: relative;
+    
+    &::after {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background: var(--img);
+      filter: blur(3px) brightness(1.15) grayscale(1);
+      mix-blend-mode: screen;
+      content: ''
+    }
+  }
+}

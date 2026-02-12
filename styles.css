@@ -23,7 +23,7 @@ body {
 .corner-title {
   position: fixed;
   font-weight: 700;
-  font-size: 120px;
+  font-size: 90px;
   color: var(--paper);
   line-height: 1;
   z-index: 15;

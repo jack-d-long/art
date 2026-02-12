@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 1em/1.125 trebuchet ms, verdana, sans-serif;
+  text-align: center;
+  color: #333a3f;
+  background: #fff;
+  padding: 1rem 0 2rem;
+}
+
+main {
+  width: 100%;
+}
+
+article {
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.75em;
+  line-height: 2;
+}
+
+section {
+  --w: min(calc(100vw - 1.5em), 30em);
+  --h: calc(1.5 * var(--w));
+  --img: url("../index/IMG_1181.png") 50% / cover no-repeat;
+  --dots: radial-gradient(circle, #000, #fff) 0 0 / 8px 8px space;
+  display: grid;
+  place-content: center;
+  grid-gap: 0 0.5em;
+}
+
+h4 {
+  font-size: 1.25em;
+  text-transform: uppercase;
+}
+
+section div {
+  width: var(--w);
+  height: var(--h);
+  background: var(--img);
+}
+
+.halftone {
+  overflow: hidden;
+  filter: contrast(19);
+}
+
+.noproc .halftone {
+  background: var(--img), var(--dots);
+  background-blend-mode: screen;
+}
+
+.filter .halftone {
+  position: relative;
+  background: var(--dots);
+}
+
+.filter .halftone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--img);
+  filter: blur(3px) brightness(1.15) grayscale(1);
+  mix-blend-mode: screen;
+}
+
+@media (min-width: 60.5em) {
+  h4 {
+    grid-row: 1;
+  }
+}
