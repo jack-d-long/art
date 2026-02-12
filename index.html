@@ -24,14 +24,9 @@
     <div class="menu-overlay" id="menu-overlay">
       <nav class="menu-nav">
         <ul>
-          <li><a href="photo.html">Photo</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="exhibits.html">Exhibits</a></li>
+          <li><a href="photo.html">Photo</a></li>
           <li><a href="halftone.html">Halftone</a></li>
-          <li><a href="sports.html">Sports</a></li>
-          <li><a href="work.html">Work</a></li>
-          <li><a href="insights.html">Insights</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -42,8 +37,50 @@
     const toggle = document.getElementById("menu-toggle");
     const label = document.querySelector(".menu-label");
     const overlay = document.getElementById("menu-overlay");
+    const menuList = document.querySelector(".menu-nav ul");
+    const root = document.documentElement;
 
     const unlockHover = () => app.classList.remove("hover-locked");
+    const parseNumberVar = (name, fallback) => {
+      const value = parseFloat(getComputedStyle(root).getPropertyValue(name));
+      return Number.isFinite(value) ? value : fallback;
+    };
+    const parsePixelVar = (name, fallback) => {
+      const raw = getComputedStyle(root).getPropertyValue(name).trim();
+      const parsed = parseFloat(raw);
+      return Number.isFinite(parsed) ? parsed : fallback;
+    };
+    const updateMenuTypeSize = () => {
+      const itemCount = menuList ? menuList.querySelectorAll("li").length : 0;
+      if (!itemCount) return;
+      root.style.setProperty("--menu-item-count", `${itemCount}`);
+
+      const topRatio = parseNumberVar("--menu-right-bound-top-ratio", 0.38);
+      const bottomRatio = parseNumberVar("--menu-right-bound-bottom-ratio", 1);
+      const padTop = parsePixelVar("--menu-type-pad-top", 24);
+      const padBottom = parsePixelVar("--menu-type-pad-bottom", 24);
+      const lineHeight = parseNumberVar("--menu-line-height", 0.98);
+      const slotFill = parseNumberVar("--menu-slot-fill", 0.62);
+      const minGap = parsePixelVar("--menu-item-gap-min", 12);
+      const cornerTypeSize = parseNumberVar("--corner-type-size", 90);
+      const menuMaxRatio = parseNumberVar("--menu-type-size-max-ratio", 0.6);
+      const minSize = parseNumberVar("--menu-type-size-min", 20);
+      const maxSize = cornerTypeSize * menuMaxRatio;
+
+      const boundedHeight = window.innerHeight * Math.max(0, bottomRatio - topRatio);
+      const usableHeight = Math.max(0, boundedHeight - padTop - padBottom);
+      const gapCount = Math.max(0, itemCount - 1);
+      const typeRegionHeight = Math.max(0, usableHeight - (minGap * gapCount));
+      const slotHeight = typeRegionHeight / itemCount;
+      const rawSize = slotHeight > 0 ? (slotHeight * slotFill) / Math.max(0.1, lineHeight) : minSize;
+      const nextSize = Math.max(minSize, Math.min(maxSize, rawSize));
+      const usedSlotHeight = (nextSize * Math.max(0.1, lineHeight)) / Math.max(0.01, slotFill);
+      const remainingHeight = Math.max(0, usableHeight - (usedSlotHeight * itemCount));
+      const nextGap = gapCount ? Math.max(minGap, remainingHeight / gapCount) : 0;
+
+      root.style.setProperty("--menu-type-size", `${nextSize}px`);
+      root.style.setProperty("--menu-item-gap", `${nextGap}px`);
+    };
 
     toggle.addEventListener("change", () => {
       if (!toggle.checked) {
@@ -55,6 +92,8 @@
 
     label.addEventListener("mouseleave", unlockHover);
     overlay.addEventListener("mouseleave", unlockHover);
+    window.addEventListener("resize", updateMenuTypeSize);
+    updateMenuTypeSize();
   </script>
 </body>
 </html>

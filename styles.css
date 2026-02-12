@@ -1,10 +1,24 @@
 :root {
+  --corner-type-size: 90;
   --ink: #111111;
   --paper: #F1F1F1;
   --bg-texture-image: url("assets/index/texture2.jpeg");
   --bg-texture-opacity: 0.18;
   --reveal-texture-opacity: 0.3;
   --menu-reveal-shape: polygon(0% 4%, 64% 100%, 100% 100%, 100% 38%, 12% 0%, 0% 0%);
+  --menu-right-bound-top-ratio: 0.38;
+  --menu-right-bound-bottom-ratio: 1;
+  --menu-right-inset: 32px;
+  --menu-type-pad-top: 100px;
+  --menu-type-pad-bottom: 100px;
+  --menu-line-height: 0.98;
+  --menu-slot-fill: 0.9;
+  --menu-item-count: 1;
+  --menu-item-gap-min: 12px;
+  --menu-item-gap: 12px;
+  --menu-type-size-min: 20;
+  --menu-type-size-max-ratio: 0.6;
+  --menu-type-size: 36px;
 }
 
 html {
@@ -40,7 +54,7 @@ body {
 .corner-title {
   position: fixed;
   font-weight: 700;
-  font-size: 90px;
+  font-size: calc(var(--corner-type-size) * 1px);
   color: #fff;
   mix-blend-mode: difference;
   line-height: 1;
@@ -184,15 +198,29 @@ body {
 }
 
 .menu-nav ul {
-  position: relative;
+  position: fixed;
   z-index: 1;
+  right: var(--menu-right-inset);
+  top: calc((var(--menu-right-bound-top-ratio) * 100vh) + var(--menu-type-pad-top));
+  bottom: calc(((1 - var(--menu-right-bound-bottom-ratio)) * 100vh) + var(--menu-type-pad-bottom));
+  display: grid;
+  grid-template-rows: repeat(var(--menu-item-count), minmax(0, 1fr));
+  row-gap: var(--menu-item-gap);
+  justify-items: end;
+  align-items: center;
   margin: 0;
-  padding: 32px;
+  padding: 0;
   list-style: none;
   text-align: right;
   color: var(--ink);
   font-weight: bold;
-  font-size: 36px;
+  font-size: var(--menu-type-size);
+  line-height: var(--menu-line-height);
+}
+
+.menu-nav li {
+  display: flex;
+  align-items: center;
 }
 
 .menu-nav a {
