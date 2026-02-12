@@ -1,8 +1,9 @@
 :root {
-  --ink: #151515;
+  --ink: #111111;
   --paper: #F1F1F1;
-  --bg-texture-image: url("assets/index/texture1.jpeg");
+  --bg-texture-image: url("assets/index/texture2.jpeg");
   --bg-texture-opacity: 0.18;
+  --reveal-texture-opacity: 0.35;
   --menu-reveal-shape: polygon(0% 4%, 64% 100%, 100% 100%, 100% 38%, 12% 0%, 0% 0%);
 }
 
@@ -126,6 +127,20 @@ body {
   position: absolute;
   inset: 0;
   background: #fff;
+  opacity: 0.9;
+  mix-blend-mode: difference;
+  clip-path: var(--menu-reveal-shape);
+  pointer-events: none;
+}
+
+.menu-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-texture-image);
+  background-position: center;
+  background-size: cover;
+  opacity: var(--reveal-texture-opacity);
   mix-blend-mode: difference;
   clip-path: var(--menu-reveal-shape);
   pointer-events: none;
