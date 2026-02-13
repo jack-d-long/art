@@ -5,11 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About</title>
   <link rel="stylesheet" href="page.css" />
+  <style>
+    body {
+      display: block;
+      place-items: initial;
+      background-color: var(--paper);
+      background-image: url("assets/about/ascii-eye.png");
+      background-size: min(320px, 40vw) auto;
+      background-position: 24px 24px;
+      background-repeat: no-repeat;
+    }
+
+    .bio-page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 140px 24px 64px;
+      line-height: 1.6;
+    }
+
+    .bio-page h1 {
+      margin: 0 0 12px;
+      font-size: 48px;
+    }
+
+    .bio-page h2 {
+      margin: 24px 0 8px;
+      font-size: 24px;
+    }
+
+    .bio-page p {
+      margin: 0 0 14px;
+      font-size: 18px;
+      max-width: 64ch;
+    }
+  </style>
 </head>
 <body>
   <a class="back-link" href="index.html">back</a>
-  <h1>About</h1>
-<h2>SDIYBT</h2>
-<p>Ts pmo</p>
+  <main class="bio-page">
+    <h1>About</h1>
+    <p>
+      This is a boilerplate bio page. Replace this paragraph with a concise personal
+      introduction that covers your background, location, and current focus.
+    </p>
+
+    <h2>Bio</h2>
+    <p>
+      Write 3-5 sentences about your path: how your practice started, what shaped it,
+      and what kind of work you are currently making.
+    </p>
+
+    <h2>Practice</h2>
+    <p>
+      Describe your methods and mediums. Keep this concrete: tools, process, constraints,
+      and what themes or questions keep appearing in your projects.
+    </p>
+
+    <h2>Now</h2>
+    <p>
+      Add a short update on recent projects, upcoming work, or what you are actively
+      exploring this season.
+    </p>
+  </main>
 </body>
 </html>
