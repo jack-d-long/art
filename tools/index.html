@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tools</title>
+  <link rel="icon" type="image/png" href="/assets/ascii-eye-fav.png" />
   <style>
     :root {
       --ink: #333A3F;
@@ -155,7 +156,7 @@
 </head>
 <body>
   <div class="app" id="app">
-    <a class="back-link" href="index.html">back</a>
+    <a class="back-link" href="/">back</a>
     <button class="menu-label" id="menu-trigger" type="button" aria-expanded="false" aria-controls="menu-rays">tools</button>
 
     <div class="menu-overlay" id="menu-overlay">
@@ -165,8 +166,8 @@
 
   <script>
     const menuLinks = [
-      { label: "Halftone", href: "halftone.html" },
-      { label: "ASCII", href: "ascii.html" }
+      { label: "Halftone", href: "/halftone/" },
+      { label: "ASCII", href: "/ascii/" }
     ];
 
     const app = document.getElementById("app");

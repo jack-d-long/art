@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Halftone</title>
+  <link rel="icon" type="image/png" href="/assets/ascii-eye-fav.png" />
   <style>
     :root {
       --ink: #111111;
@@ -81,7 +82,7 @@
   </style>
 </head>
 <body>
-  <a class="back-link" href="index.html">back</a>
+  <a class="back-link" href="/">back</a>
   <article class="standard">
     <h3>Standard Filtered Halftone</h3>
     <section>
@@ -106,7 +107,7 @@
 
   <script>
     (() => {
-      const SOURCE_PATH = "./assets/index/Subject.png";
+      const SOURCE_PATH = "/assets/index/Subject.png";
       const DOT_CELL = 8;
       const DOT_RADIUS = DOT_CELL * 0.48;
       const MASK_SPREAD = DOT_CELL * 0.5;
@@ -123,7 +124,7 @@
       const img = new Image();
       img.onload = () => renderAll();
       img.onerror = () => {
-        renderNote.textContent = "Image failed to load from ./assets/index/Subject.png.";
+        renderNote.textContent = "Image failed to load from /assets/index/Subject.png.";
       };
       img.src = SOURCE_PATH;
       window.addEventListener("resize", debounce(renderAll, 120));
