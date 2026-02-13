@@ -1,6 +1,7 @@
 :root {
-  --ink: #333A3F;
-  --paper: #fff;
+  --ink: #151515;
+  --paper: #F1F1F1;
+
   --back-edge-offset: 100px;
   --back-blend-source: #CCC5C0;
 }
@@ -29,7 +30,7 @@ h1 {
   position: fixed;
   top: var(--back-edge-offset);
   left: var(--back-edge-offset);
-  color: var(--back-blend-source);
+  color: var(--ink);
   mix-blend-mode: difference;
   text-shadow: 0 0 0.8px rgba(0, 0, 0, 0.25);
   text-decoration: none;
