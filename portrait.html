@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portraits</title>
+  <style>
+    :root {
+      --ink: #333A3F;
+      --paper: #fff;
+      --back-edge-offset: 50px;
+      --back-blend-source: #CCC5C0;
+    }
+
+    body {
+      margin: 0;
+      padding: 88px 200px 200px;
+      font-family: sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      isolation: isolate;
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      font-size: 100px;
+    }
+
+    .back-link {
+      position: fixed;
+      top: var(--back-edge-offset);
+      left: var(--back-edge-offset);
+      color: var(--ink);
+      mix-blend-mode: difference;
+      text-shadow: 0 0 0.8px rgba(0, 0, 0, 0.25);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      z-index: 100;
+    }
+
+    .back-link:hover {
+      opacity: 0.7;
+    }
+
+    .grid {
+      column-count: 3;
+      column-gap: 100px;
+    }
+
+    .grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #f2f2f2;
+      margin: 0 0 100px;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        column-count: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="back-link" href="index.html">back</a>
+  <h1>Portraits</h1>
+  <div class="grid">
+    <img src="assets/portrait/IMG_6320.jpg" alt="IMG 6320" />
+    <img src="assets/portrait/IMG_6336.jpg" alt="IMG 6336" />
+    <img src="assets/portrait/IMG_6426.jpg" alt="IMG 6426" />
+    <img src="assets/portrait/IMG_6536.jpg" alt="IMG 6536" />
+    <img src="assets/portrait/IMG_6570.jpg" alt="IMG 6570" />
+    <img src="assets/portrait/IMG_6575.jpg" alt="IMG 6575" />
+    <img src="assets/portrait/IMG_6580.jpg" alt="IMG 6580" />
+    <img src="assets/portrait/gramma.jpg" alt="Gramma" />
+    <img src="assets/portrait/grampa_plane.jpg" alt="Grampa Plane" />
+    <img src="assets/portrait/jack_nonchalant.jpg" alt="Jack Nonchalant" />
+    <img src="assets/portrait/stallone.jpg" alt="Stallone" />
+  </div>
+</body>
+</html>

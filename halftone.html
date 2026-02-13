@@ -8,6 +8,8 @@
     :root {
       --ink: #333a3f;
       --paper: #fff;
+      --back-edge-offset: 32px;
+      --back-blend-source: #ccc5c0;
       --dark-bg: #07090b;
       --frame: min(calc(100vw - 1.5rem), 30rem);
       --gap: 0.5rem;
@@ -24,13 +26,16 @@
       color: var(--ink);
       background: var(--paper);
       padding: 4.5rem 0 2rem;
+      isolation: isolate;
     }
 
     .back-link {
       position: fixed;
-      top: 32px;
-      left: 32px;
-      color: var(--ink);
+      top: var(--back-edge-offset);
+      left: var(--back-edge-offset);
+      color: var(--back-blend-source);
+      mix-blend-mode: difference;
+      text-shadow: 0 0 0.8px rgba(0, 0, 0, 0.25);
       text-decoration: none;
       font-size: 16px;
       font-weight: 700;

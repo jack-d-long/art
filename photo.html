@@ -8,26 +8,31 @@
     :root {
       --ink: #333A3F;
       --paper: #fff;
+      --back-edge-offset: 50px;
+      --back-blend-source: var(--ink);
     }
 
     body {
       margin: 0;
-      padding: 88px 32px 32px;
+      padding: 88px 100px 100px;
       font-family: sans-serif;
       background: var(--paper);
       color: var(--ink);
+      isolation: isolate;
     }
 
     h1 {
       margin: 0 0 24px;
-      font-size: 48px;
+      font-size: 100px;
     }
 
     .back-link {
       position: fixed;
-      top: 32px;
-      left: 32px;
-      color: var(--ink);
+      top: var(--back-edge-offset);
+      left: var(--back-edge-offset);
+      color: var(--back-blend-source);
+      mix-blend-mode: difference;
+      text-shadow: 0 0 0.8px rgba(0, 0, 0, 0.25);
       text-decoration: none;
       font-size: 16px;
       font-weight: 700;
@@ -69,7 +74,7 @@
 </head>
 <body>
   <a class="back-link" href="index.html">back</a>
-  <h1>Photo</h1>
+  <h1>Art</h1>
   <div class="grid">
     <img src="assets/long_art2601_fa25_portfolio/01-the-flood.jpg" alt="The Flood" />
     <img src="assets/long_art2601_fa25_portfolio/02-what-we-found.jpg" alt="What We Found" />

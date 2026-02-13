@@ -1,6 +1,8 @@
 :root {
   --ink: #333A3F;
   --paper: #fff;
+  --back-edge-offset: 100px;
+  --back-blend-source: #CCC5C0;
 }
 
 html,
@@ -15,6 +17,7 @@ body {
   font-family: sans-serif;
   background: var(--paper);
   color: var(--ink);
+  isolation: isolate;
 }
 
 h1 {
@@ -24,9 +27,11 @@ h1 {
 
 .back-link {
   position: fixed;
-  top: 32px;
-  left: 32px;
-  color: var(--ink);
+  top: var(--back-edge-offset);
+  left: var(--back-edge-offset);
+  color: var(--back-blend-source);
+  mix-blend-mode: difference;
+  text-shadow: 0 0 0.8px rgba(0, 0, 0, 0.25);
   text-decoration: none;
   font-size: 16px;
   font-weight: 700;
