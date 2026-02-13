@@ -6,8 +6,8 @@
   <title>Photo</title>
   <style>
     :root {
-      --ink: #333A3F;
-      --paper: #fff;
+      --ink: #151515;
+      --paper: #F1F1F1;
       --back-edge-offset: 50px;
       --back-blend-source: var(--ink);
     }
@@ -22,7 +22,7 @@
     }
 
     h1 {
-      margin: 0 0 24px;
+      margin: 0 0 50px;
       font-size: 100px;
     }
 
@@ -46,15 +46,18 @@
 
     .grid {
       column-count: 3;
-      column-gap: 24px;
+      column-gap: 100px;
     }
 
     .grid img {
       width: 100%;
       height: auto;
       display: block;
-      background: #f2f2f2;
-      margin: 0 0 24px;
+      background: var(--paper);
+      border: 24px solid var(--paper);
+      box-shadow: 0 14px 14px rgba(0, 0, 0, 0.10);
+    
+      margin: 0 0 50px;
       break-inside: avoid;
       -webkit-column-break-inside: avoid;
     }
