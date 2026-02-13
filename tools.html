@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools</title>
+  <style>
+    :root {
+      --ink: #333A3F;
+      --paper: #fff;
+      --origin-x: 101%;
+      --origin-y: 50%;
+      --reveal-radius: 75vmax;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .app {
+      position: relative;
+      min-height: 100vh;
+      padding: 32px;
+      isolation: isolate;
+    }
+
+    .back-link {
+      position: fixed;
+      top: 32px;
+      left: 32px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      z-index: 6;
+    }
+
+    .back-link:hover {
+      opacity: 0.7;
+    }
+
+    .menu-label {
+      position: fixed;
+      top: var(--origin-y);
+      left: calc(100% - 20px);
+      transform: translate(-100%, -50%);
+      z-index: 6;
+      border: 0;
+      background: transparent;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: lowercase;
+      color: var(--ink);
+      transition: color 0.2s ease;
+      cursor: pointer;
+      user-select: none;
+      padding: 0;
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      clip-path: circle(0 at var(--origin-x) var(--origin-y));
+      transition: clip-path 0.6s ease;
+      pointer-events: none;
+      background: transparent;
+    }
+
+    .app.open .menu-overlay,
+    .app:has(.menu-label:hover) .menu-overlay,
+    .app:has(.ray:hover) .menu-overlay {
+      clip-path: circle(var(--reveal-radius) at var(--origin-x) var(--origin-y));
+      pointer-events: auto;
+    }
+
+    .app.open .menu-label,
+    .app:has(.menu-label:hover) .menu-label,
+    .app:has(.ray:hover) .menu-label {
+      color: var(--paper);
+    }
+
+    .menu-rays {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .ray {
+      position: absolute;
+      top: var(--origin-y);
+      left: var(--origin-x);
+      width: 60vmax;
+      height: 18vmax;
+      transform-origin: 0% 50%;
+      clip-path: polygon(0 50%, 100% 0, 100% 100%);
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--paper);
+      font-size: 32px;
+      text-decoration: none;
+      pointer-events: auto;
+      transition: opacity 0.2s ease;
+    }
+
+    .ray span {
+      position: absolute;
+      top: 50%;
+      left: var(--label-x, 50%);
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+    }
+
+    .ray span.flip {
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+
+    .ray:hover {
+      opacity: 0.75;
+    }
+
+    @media (max-width: 900px) {
+      .ray {
+        width: 70vmax;
+        height: 22vmax;
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .ray {
+        width: 80vmax;
+        height: 28vmax;
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <a class="back-link" href="index.html">back</a>
+    <button class="menu-label" id="menu-trigger" type="button" aria-expanded="false" aria-controls="menu-rays">tools</button>
+
+    <div class="menu-overlay" id="menu-overlay">
+      <nav class="menu-rays" id="menu-rays" aria-label="Tools menu"></nav>
+    </div>
+  </div>
+
+  <script>
+    const menuLinks = [
+      { label: "Halftone", href: "halftone.html" },
+      { label: "ASCII", href: "ascii.html" }
+    ];
+
+    const app = document.getElementById("app");
+    const trigger = document.getElementById("menu-trigger");
+    const menu = document.getElementById("menu-rays");
+
+    const rays = [];
+    let open = false;
+
+    const setOpen = (nextOpen) => {
+      open = nextOpen;
+      app.classList.toggle("open", open);
+      trigger.setAttribute("aria-expanded", String(open));
+    };
+
+    const maxDistanceToCorner = (ox, oy, width, height) => {
+      const corners = [
+        [0, 0],
+        [width, 0],
+        [0, height],
+        [width, height]
+      ];
+      return Math.max(...corners.map(([x, y]) => Math.hypot(x - ox, y - oy)));
+    };
+
+    const layoutRays = () => {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const originXPercent = ((vw + 24) / vw) * 100;
+      const originYPercent = 50;
+      app.style.setProperty("--origin-x", `${originXPercent}%`);
+      app.style.setProperty("--origin-y", `${originYPercent}%`);
+
+      const ox = (originXPercent / 100) * vw;
+      const oy = (originYPercent / 100) * vh;
+      const rayLength = maxDistanceToCorner(ox, oy, vw, vh) + 40;
+      app.style.setProperty("--reveal-radius", `${rayLength}px`);
+
+      rays.forEach(({ link, angle, thetaDeg, label }) => {
+        const theta = (thetaDeg * Math.PI) / 180;
+        const height = 2 * rayLength * Math.tan(theta / 2);
+        const rad = (angle * Math.PI) / 180;
+        const dx = Math.cos(rad);
+        const dy = Math.sin(rad);
+        const candidates = [];
+
+        if (dx !== 0) {
+          const tLeft = (0 - ox) / dx;
+          const yLeft = oy + tLeft * dy;
+          if (tLeft > 0 && yLeft >= 0 && yLeft <= vh) candidates.push(tLeft);
+
+          const tRight = (vw - ox) / dx;
+          const yRight = oy + tRight * dy;
+          if (tRight > 0 && yRight >= 0 && yRight <= vh) candidates.push(tRight);
+        }
+
+        if (dy !== 0) {
+          const tTop = (0 - oy) / dy;
+          const xTop = ox + tTop * dx;
+          if (tTop > 0 && xTop >= 0 && xTop <= vw) candidates.push(tTop);
+
+          const tBottom = (vh - oy) / dy;
+          const xBottom = ox + tBottom * dx;
+          if (tBottom > 0 && xBottom >= 0 && xBottom <= vw) candidates.push(tBottom);
+        }
+
+        const edgeDist = candidates.length ? Math.min(...candidates) : rayLength;
+        const labelX = edgeDist / 2;
+
+        link.style.width = `${rayLength}px`;
+        link.style.height = `${height}px`;
+        link.style.transform = `translate(0, -50%) rotate(${angle}deg)`;
+        label.style.setProperty("--label-x", `${labelX}px`);
+      });
+    };
+
+    const count = menuLinks.length;
+    const startAngle = count === 2 ? 130 : 110;
+    const endAngle = count === 2 ? 230 : 250;
+    const step = count > 1 ? (endAngle - startAngle) / (count - 1) : 0;
+
+    menuLinks.forEach((item, index) => {
+      const angle = startAngle + (step * index);
+      const thetaDeg = count === 2 ? 24 : 20;
+      const link = document.createElement("a");
+      link.className = "ray";
+      link.href = item.href;
+
+      const label = document.createElement("span");
+      label.textContent = item.label;
+      if (angle >= 90 && angle <= 270) label.classList.add("flip");
+      link.appendChild(label);
+      menu.appendChild(link);
+
+      rays.push({ link, label, angle, thetaDeg });
+    });
+
+    trigger.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setOpen(!open);
+    });
+
+    app.addEventListener("mouseleave", () => {
+      if (open) setOpen(false);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!open) return;
+      if (!app.contains(event.target)) setOpen(false);
+    });
+
+    layoutRays();
+    window.addEventListener("resize", layoutRays);
+  </script>
+</body>
+</html>
