@@ -15,6 +15,7 @@ body {
   margin: 0;
   display: grid;
   place-items: center;
+  position: relative;
   font-family: sans-serif;
   background: var(--paper);
   color: var(--ink);
@@ -27,7 +28,7 @@ h1 {
 }
 
 .back-link {
-  position: fixed;
+  position: absolute;
   top: var(--back-edge-offset);
   left: var(--back-edge-offset);
   color: var(--ink);
