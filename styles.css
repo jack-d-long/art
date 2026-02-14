@@ -1,6 +1,6 @@
 :root {
   --corner-type-size: 90;
-  --ink: #111111;
+  --ink: #151515;
   --paper: #F1F1F1;
   --bg-texture-image: url("assets/index/texture2.jpeg");
   --bg-texture-opacity: 0.18;
@@ -55,7 +55,7 @@ body {
   position: fixed;
   font-weight: 700;
   font-size: calc(var(--corner-type-size) * 1px);
-  color: #fff;
+  color: var(--paper);
   mix-blend-mode: difference;
   line-height: 1;
   z-index: 15;
@@ -140,7 +140,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: #fff;
+  background: var(--paper);
   opacity: 1;
   mix-blend-mode: difference;
   clip-path: var(--menu-reveal-shape);

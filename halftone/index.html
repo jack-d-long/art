@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="/assets/ascii-eye-fav.png" />
   <style>
     :root {
-      --ink: #111111;
+      --ink: #151515;
       --paper: #F1F1F1;
       --back-edge-offset: 32px;
       --back-blend-source: #ccc5c0;
@@ -141,11 +141,11 @@
         setupCanvas(canvases.origDark, width, height);
         setupCanvas(canvases.halfDark, width, height);
 
-        drawOriginal(canvases.origStandard, width, height, "#ffffff");
+        drawOriginal(canvases.origStandard, width, height, "#F1F1F1");
         drawOriginal(canvases.origDark, width, height, "#07090b");
 
         renderHalftone(canvases.halfStandard, width, height, {
-          bg: "#ffffff",
+          bg: "#F1F1F1",
           toneFilter: "blur(3px) brightness(0.9) grayscale(1)",
           invertFinal: false
         });
@@ -223,7 +223,7 @@
           DOT_RADIUS
         );
         g.addColorStop(0, "#000");
-        g.addColorStop(1, "#fff");
+        g.addColorStop(1, "#F1F1F1");
         pctx.fillStyle = g;
         pctx.fillRect(0, 0, cell, cell);
         return pctx.createPattern(p, "repeat");
