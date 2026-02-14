@@ -13,6 +13,7 @@
     :root {
       --about-texture-opacity: 1;
       --about-ink-overlay-opacity: 0.8;
+      --mobile-image-ink-opacity: 0.35;
       --indacar-size:30vw;
       --indacar-size-mobile: 70vw;
       /* --pfp-layer-size: 50vw; */
@@ -116,6 +117,20 @@
       pointer-events: none;
       z-index: 2;
     }
+
+    .mobile-image-ink-overlay {
+      position: fixed;
+      inset: 0;
+      background: #111111;
+      opacity: var(--mobile-image-ink-opacity);
+      pointer-events: none;
+      z-index: 2.5;
+      display: none;
+    }
+
+    body.indacar-overlap-active .mobile-image-ink-overlay {
+      display: block;
+    }
 /* 
     .pfp-layer {
       position: fixed;
@@ -202,6 +217,7 @@
     <img src="/assets/about/eye-dark-yellow.png" alt="" />
   </div>
   <img class="indacar-corner" src="/assets/about/indacar1.webp" alt="" aria-hidden="true" />
+  <div class="mobile-image-ink-overlay" aria-hidden="true"></div>
   <!-- <div class="pfp-layer" aria-hidden="true">
     <img src="/assets/about/pfp-dark-cyan.png" alt="" />
     <img src="/assets/about/pfp-dark-magenta.png" alt="" />
@@ -213,15 +229,15 @@
 
     <h2></h2>
     <p>
-      I'm a Mechanical Engineering student at Cornell exploring self-expression
+      I'm an engineering student at Cornell University exploring self-expression
       through a variety of photographic media. My personal work focuses on how modern software and hardware 
       tools can inspire and augment analog processes, and the creation of unsettling images in familiar spaces. 
     </p>
 
     <p>
       My analog images are captured on 35mm and medium-format film, as well as directly to black and white negative photopaper. I shoot with a 
-      Minolta X-370 and Hasselblad 500C inherited from both sides of my family, as well as a Nikon F-801 and Konica Autoreflex TC that I have modified
-      and maintained extensively. <br><br>
+      Minolta X-370 and Hasselblad 500C inherited from both sides of my family, as well as a Nikon F-801 and Konica Autoreflex TC that I have maintained
+      and modified extensively. <br><br>
 
       I make silver gelatin prints through traditional B&W optical enlargement on Ilford Multigrade paper. Digital images are captured on Canon, Sony, and Fujifilm SLR or mirrorless systems. 
     </p>
@@ -237,5 +253,54 @@
 
     </p>
   </main>
+  <script>
+    const indacar = document.querySelector(".indacar-corner");
+    const overlapTargets = Array.from(document.querySelectorAll(".bio-page h1, .bio-page h2, .bio-page p"));
+
+    const intersects = (a, b) =>
+      a.left < b.right &&
+      a.right > b.left &&
+      a.top < b.bottom &&
+      a.bottom > b.top;
+
+    const updateIndacarOverlap = () => {
+      if (!indacar || overlapTargets.length === 0) {
+        document.body.classList.remove("indacar-overlap-active");
+        return;
+      }
+
+      const indacarRect = indacar.getBoundingClientRect();
+      let hasOverlap = false;
+
+      for (const el of overlapTargets) {
+        const rect = el.getBoundingClientRect();
+        if (rect.width === 0 || rect.height === 0) continue;
+        if (intersects(indacarRect, rect)) {
+          hasOverlap = true;
+          break;
+        }
+      }
+
+      document.body.classList.toggle("indacar-overlap-active", hasOverlap);
+    };
+
+    let overlapRaf = null;
+    const queueOverlapUpdate = () => {
+      if (overlapRaf !== null) return;
+      overlapRaf = requestAnimationFrame(() => {
+        overlapRaf = null;
+        updateIndacarOverlap();
+      });
+    };
+
+    window.addEventListener("scroll", queueOverlapUpdate, { passive: true });
+    window.addEventListener("resize", queueOverlapUpdate);
+
+    if (indacar && !indacar.complete) {
+      indacar.addEventListener("load", queueOverlapUpdate, { once: true });
+    }
+
+    queueOverlapUpdate();
+  </script>
 </body>
 </html>
