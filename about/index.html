@@ -13,9 +13,16 @@
     :root {
       --about-texture-opacity: 1;
       --about-ink-overlay-opacity: 0.8;
-      --mobile-image-ink-opacity: 0.35;
-      --indacar-size:20vw;
-      --indacar-size-mobile: 30vw;
+      --indacar-size: 20vw;
+      --indacar-size-mobile: 38vw;
+      --indacar-offset-top: 8px;
+      --indacar-offset-left: -190px;
+      --indacar-offset-bottom: -50px;
+      --indacar-text-gap-right: 24px;
+      --indacar-shape-margin: 30px;
+      --indacar-offset-bottom-mobile: 12px;
+      --indacar-text-gap-right-mobile: 14px;
+      --indacar-shape-margin-mobile: 10px;
       /* --pfp-layer-size: 50vw; */
     }
 
@@ -108,29 +115,15 @@
       z-index: 3;
     }
 
-    .indacar-corner {
-      position: fixed;
-      left: 32px;
-      bottom: 32px;
+    .indacar-wrap {
+      float: left;
       width: var(--indacar-size);
       height: auto;
       display: block;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .mobile-image-ink-overlay {
-      position: fixed;
-      inset: 0;
-      background: var(--ink);
-      opacity: var(--mobile-image-ink-opacity);
-      pointer-events: none;
-      z-index: 2.5;
-      display: none;
-    }
-
-    body.indacar-overlap-active .mobile-image-ink-overlay {
-      display: block;
+      margin: var(--indacar-offset-top) var(--indacar-text-gap-right) var(--indacar-offset-bottom) var(--indacar-offset-left);
+      shape-outside: url("/assets/about/indacar_transp.webp");
+      shape-image-threshold: 0.25;
+      shape-margin: var(--indacar-shape-margin);
     }
 /* 
     .pfp-layer {
@@ -173,10 +166,11 @@
         right: 10px;
       }
 
-      .indacar-corner {
-        left: 10px;
-        bottom: 10px;
+      .indacar-wrap {
         width: var(--indacar-size-mobile);
+        margin-right: var(--indacar-text-gap-right-mobile);
+        margin-bottom: var(--indacar-offset-bottom-mobile);
+        shape-margin: var(--indacar-shape-margin-mobile);
       }
       /* .pfp-layer {
         left: 10px;
@@ -188,7 +182,7 @@
       z-index: 3;
       max-width: 1000px;
       margin: 0 auto;
-      padding: 50px 32px 48px 200px;
+      padding: 50px 32px 48px;
       line-height: 1.6;
     }
 
@@ -217,8 +211,6 @@
     <img src="/assets/about/eye-dark-magenta.png" alt="" />
     <img src="/assets/about/eye-dark-yellow.png" alt="" />
   </div>
-  <img class="indacar-corner" src="/assets/about/indacar_transp.webp" alt="" aria-hidden="true" />
-  <div class="mobile-image-ink-overlay" aria-hidden="true"></div>
   <!-- <div class="pfp-layer" aria-hidden="true">
     <img src="/assets/about/pfp-dark-cyan.png" alt="" />
     <img src="/assets/about/pfp-dark-magenta.png" alt="" />
@@ -227,6 +219,7 @@
   <a class="about-back-link" href="/">back</a>
   <main class="bio-page">
     <h1>About</h1>
+    <img class="indacar-wrap" src="/assets/about/indacar_transp.webp" alt="" aria-hidden="true" />
 
     <h2></h2>
     <p>
@@ -254,54 +247,5 @@
 
     </p>
   </main>
-  <script>
-    const indacar = document.querySelector(".indacar-corner");
-    const overlapTargets = Array.from(document.querySelectorAll(".bio-page h1, .bio-page h2, .bio-page p"));
-
-    const intersects = (a, b) =>
-      a.left < b.right &&
-      a.right > b.left &&
-      a.top < b.bottom &&
-      a.bottom > b.top;
-
-    const updateIndacarOverlap = () => {
-      if (!indacar || overlapTargets.length === 0) {
-        document.body.classList.remove("indacar-overlap-active");
-        return;
-      }
-
-      const indacarRect = indacar.getBoundingClientRect();
-      let hasOverlap = false;
-
-      for (const el of overlapTargets) {
-        const rect = el.getBoundingClientRect();
-        if (rect.width === 0 || rect.height === 0) continue;
-        if (intersects(indacarRect, rect)) {
-          hasOverlap = true;
-          break;
-        }
-      }
-
-      document.body.classList.toggle("indacar-overlap-active", hasOverlap);
-    };
-
-    let overlapRaf = null;
-    const queueOverlapUpdate = () => {
-      if (overlapRaf !== null) return;
-      overlapRaf = requestAnimationFrame(() => {
-        overlapRaf = null;
-        updateIndacarOverlap();
-      });
-    };
-
-    window.addEventListener("scroll", queueOverlapUpdate, { passive: true });
-    window.addEventListener("resize", queueOverlapUpdate);
-
-    if (indacar && !indacar.complete) {
-      indacar.addEventListener("load", queueOverlapUpdate, { once: true });
-    }
-
-    queueOverlapUpdate();
-  </script>
 </body>
 </html>
