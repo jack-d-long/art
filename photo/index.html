@@ -18,23 +18,38 @@
       padding: 88px 100px 100px;
       position: relative;
       font-family: sans-serif;
-      background: var(--paper);
-      color: var(--ink);
+      background: var(--ink);
+      color: var(--paper);
       isolation: isolate;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("/assets/index/texture2.jpeg");
+      background-position: center;
+      background-size: cover;
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
     }
 
     h1 {
       margin: 0 0 50px;
-      font-size: 100px;
+      font-size: clamp(48px, 10vw, 100px);
+      color: var(--paper);
+      position: relative;
+      z-index: 1;
     }
 
     .back-link {
       position: absolute;
       top: var(--back-edge-offset);
       left: var(--back-edge-offset);
-      color: var(--back-blend-source);
-      mix-blend-mode: difference;
-      text-shadow: 0 0 0.8px rgba(0, 0, 0, 0.25);
+      color: var(--paper);
+      mix-blend-mode: normal;
+      text-shadow: none;
       text-decoration: none;
       font-size: 16px;
       font-weight: 700;
@@ -49,6 +64,8 @@
     .grid {
       column-count: 3;
       column-gap: 100px;
+      position: relative;
+      z-index: 1;
     }
 
     .grid img {
@@ -62,6 +79,10 @@
       margin: 0 0 50px;
       break-inside: avoid;
       -webkit-column-break-inside: avoid;
+    }
+
+    body.no-image-border .grid img {
+      border: 0;
     }
 
     @media (max-width: 900px) {
@@ -96,5 +117,12 @@
     <img src="/assets/long_art2601_fa25_portfolio/13-nick-fuentes-eat-your-heart-out.jpg" alt="Nick Fuentes Eat Your Heart Out" />
     <img src="/assets/long_art2601_fa25_portfolio/14-into-winter.jpg" alt="Into Winter" />
   </div>
+  <script>
+    const ENABLE_IMAGE_BORDER = false;
+
+    if (!ENABLE_IMAGE_BORDER) {
+      document.body.classList.add("no-image-border");
+    }
+  </script>
 </body>
 </html>

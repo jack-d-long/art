@@ -6,6 +6,7 @@
   --bg-texture-opacity: 0.18;
   --reveal-texture-opacity: 0.3;
   --menu-reveal-shape: polygon(0% 4%, 64% 100%, 100% 100%, 100% 38%, 12% 0%, 0% 0%);
+  --menu-reveal-origin-y: 0px;
   --menu-right-bound-top-ratio: 0.38;
   --menu-right-bound-bottom-ratio: 1;
   --menu-right-inset: 32px;
@@ -19,6 +20,7 @@
   --menu-type-size-min: 20;
   --menu-type-size-max-ratio: 0.6;
   --menu-type-size: 40px;
+  --menu-select-arrow: url("assets/select-arrow-left.webp");
 }
 
 html {
@@ -135,7 +137,7 @@ body {
 .menu-overlay {
   position: fixed;
   inset: 0;
-  clip-path: circle(0 at 0 0);
+  clip-path: circle(0 at 0 var(--menu-reveal-origin-y));
   transition: clip-path 0.3s ease-in-out;
   pointer-events: none;
   z-index: 5;
@@ -168,7 +170,7 @@ body {
 .app:has(.menu-toggle:checked) .menu-overlay,
 .app:not(.hover-locked):has(.menu-label:hover) .menu-overlay,
 .app:not(.hover-locked):has(.menu-overlay:hover) .menu-overlay {
-  clip-path: circle(calc(1.42 * 100vmax) at 0 0);
+  clip-path: circle(calc(1.42 * 100vmax) at 0 var(--menu-reveal-origin-y));
   transition: clip-path 0.5s ease-in-out;
   pointer-events: auto;
 }
@@ -231,6 +233,30 @@ body {
 .menu-nav a {
   color: inherit;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-nav a::before {
+  content: "";
+  width: 1.5em;
+  height: 1em;
+  flex: 0 0 auto;
+  display: inline-block;
+  background-image: var(--menu-select-arrow);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  transform: translateX(0px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.menu-nav a:hover::before,
+.menu-nav a:focus-visible::before {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .menu-nav a:hover {

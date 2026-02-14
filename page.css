@@ -24,12 +24,12 @@ body {
 
 h1 {
   margin: 0;
-  font-size: 48px;
+  font-size: clamp(36px, 8vw, 48px);
 }
 
 .back-link {
   position: absolute;
-  top: var(--back-edge-offset);
+  top: 32px;
   left: var(--back-edge-offset);
   color: var(--ink);
   mix-blend-mode: difference;
