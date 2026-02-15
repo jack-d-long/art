@@ -11,6 +11,9 @@
       --paper: #F1F1F1;
       --back-edge-offset: 50px;
       --back-blend-source: var(--ink);
+      --canvas-unit-count: 3;
+      --canvas-gap-x: 100px;
+      --canvas-gap-y: 50px;
     }
 
     body {
@@ -62,38 +65,42 @@
     }
 
     .grid {
-      column-count: 3;
-      column-gap: 100px;
       position: relative;
       z-index: 1;
     }
 
-    .grid img {
+    .canvas-item {
+      position: absolute;
+      margin: 0;
+    }
+
+    .canvas-item img {
       width: 100%;
       height: auto;
       display: block;
+      box-sizing: border-box;
       background: var(--paper);
       border: 24px solid var(--paper);
       box-shadow: 0 14px 14px rgba(0, 0, 0, 0.10);
-    
-      margin: 0 0 50px;
-      break-inside: avoid;
-      -webkit-column-break-inside: avoid;
     }
 
-    body.no-image-border .grid img {
+    body.no-image-border .canvas-item img {
       border: 0;
     }
 
     @media (max-width: 900px) {
-      .grid {
-        column-count: 2;
+      :root {
+        --canvas-unit-count: 2;
+        --canvas-gap-x: 32px;
+        --canvas-gap-y: 36px;
       }
     }
 
     @media (max-width: 600px) {
-      .grid {
-        column-count: 1;
+      :root {
+        --canvas-unit-count: 1;
+        --canvas-gap-x: 0px;
+        --canvas-gap-y: 28px;
       }
     }
   </style>
@@ -102,37 +109,117 @@
   <a class="back-link" href="/">back</a>
   <h1>Art</h1>
   <div class="grid">
-                    <img src="/assets/art/final-1101.jpg" alt="Final 1101" />
+    <!-- Set data-span to 1, 2, or 3 to control image width across the 3-column canvas. -->
+    <figure class="canvas-item" data-span="2"><img src="/assets/art/final-1101.jpg" alt="Final 1101" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/art/01-the-flood.jpg" alt="The Flood" /></figure>
+        <figure class="canvas-item" data-span="1"><img src="/assets/art/14-into-winter.jpg" alt="Into Winter" /></figure>
+            <figure class="canvas-item" data-span="1"><img src="/assets/art/03-the-comedian-escapes.jpg" alt="The Comedian Escapes" /></figure>
 
-    <img src="/assets/art/01-the-flood.jpg" alt="The Flood" />
-    <img src="/assets/art/02-what-we-found.jpg" alt="What We Found" />
 
-    <img src="/assets/art/03-the-comedian-escapes.jpg" alt="The Comedian Escapes" />
-    <img src="/assets/art/04-missed-it.jpg" alt="Missed It" />
 
-    <img src="/assets/art/05-where-from-here.jpg" alt="Where from Here" />
+            <figure class="canvas-item" data-span="2"><img src="/assets/art/final-1072.jpg" alt="Final 1072" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/art/08-you-got-me.jpg" alt="You Got Me" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/art/12-more-likely.jpg" alt="More Likely" /></figure>
 
-    <img src="/assets/art/06-home-is-where-the-heart-is.jpg" alt="Home Is Where the Heart Is" />
-    
-    <img src="/assets/art/07-evergreen.jpg" alt="Evergreen" />
+    <figure class="canvas-item" data-span="1"><img src="/assets/art/06-home-is-where-the-heart-is.jpg" alt="Home Is Where the Heart Is" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/art/07-evergreen.jpg" alt="Evergreen" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/art/09-condition-one.jpg" alt="Condition One" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/art/10-wheres-the-rest.jpg" alt="Where's the Rest" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/art/11-unlikely-to-bloom.jpg" alt="Unlikely to Bloom" /></figure>
+        <figure class="canvas-item" data-span="2"><img src="/assets/art/05-where-from-here.jpg" alt="Where from Here" /></figure>
 
-    <img src="/assets/art/08-you-got-me.jpg" alt="You Got Me" />
-    <img src="/assets/art/09-condition-one.jpg" alt="Condition One" />
-    <img src="/assets/art/10-wheres-the-rest.jpg" alt="Where's the Rest" />
-    <img src="/assets/art/11-unlikely-to-bloom.jpg" alt="Unlikely to Bloom" />
-    <img src="/assets/art/12-more-likely.jpg" alt="More Likely" />
-    <img src="/assets/art/13-nick-fuentes-eat-your-heart-out.jpg" alt="Nick Fuentes Eat Your Heart Out" />
-    <img src="/assets/art/14-into-winter.jpg" alt="Into Winter" />
-    <img src="/assets/art/final-1072.jpg" alt="Final 1072" />
-    <img src="/assets/art/final-1086.jpg" alt="Final 1086" />
-    <img src="/assets/art/final-1106.jpg" alt="Final 1106" />
+        <figure class="canvas-item" data-span="1"><img src="/assets/art/02-what-we-found.jpg" alt="What We Found" /></figure>
+
+    <figure class="canvas-item" data-span="2"><img src="/assets/art/13-nick-fuentes-eat-your-heart-out.jpg" alt="Nick Fuentes Eat Your Heart Out" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/art/final-1086.jpg" alt="Final 1086" /></figure>
+    <figure class="canvas-item" data-span="2"><img src="/assets/art/final-1106.jpg" alt="Final 1106" /></figure>
   </div>
   <script>
     const ENABLE_IMAGE_BORDER = false;
+    const grid = document.querySelector(".grid");
+    const items = Array.from(grid.querySelectorAll(".canvas-item"));
 
     if (!ENABLE_IMAGE_BORDER) {
       document.body.classList.add("no-image-border");
     }
+
+    const readPxVar = (name, fallback) => {
+      const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      const parsed = Number.parseFloat(raw);
+      return Number.isFinite(parsed) ? parsed : fallback;
+    };
+
+    const readIntVar = (name, fallback) => {
+      const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      const parsed = Number.parseInt(raw, 10);
+      return Number.isFinite(parsed) ? parsed : fallback;
+    };
+
+    const relayoutCanvas = () => {
+      const cols = Math.max(1, readIntVar("--canvas-unit-count", 3));
+      const gapX = readPxVar("--canvas-gap-x", 100);
+      const gapY = readPxVar("--canvas-gap-y", 50);
+      const unitWidth = (grid.clientWidth - gapX * (cols - 1)) / cols;
+
+      if (!Number.isFinite(unitWidth) || unitWidth <= 0) {
+        return;
+      }
+
+      const heights = Array(cols).fill(0);
+
+      items.forEach((item) => {
+        const requestedSpan = Number.parseInt(item.dataset.span || "1", 10) || 1;
+        const span = Math.max(1, Math.min(cols, requestedSpan));
+        const img = item.querySelector("img");
+        const ratio = img && img.naturalWidth > 0 ? img.naturalHeight / img.naturalWidth : 1;
+
+        let bestStart = 0;
+        let bestTop = Number.POSITIVE_INFINITY;
+
+        for (let start = 0; start <= cols - span; start += 1) {
+          const top = Math.max(...heights.slice(start, start + span));
+          if (top < bestTop) {
+            bestTop = top;
+            bestStart = start;
+          }
+        }
+
+        const width = unitWidth * span + gapX * (span - 1);
+        const height = Math.max(1, width * ratio);
+        const left = bestStart * (unitWidth + gapX);
+
+        item.style.left = `${left}px`;
+        item.style.top = `${bestTop}px`;
+        item.style.width = `${width}px`;
+
+        const newHeight = bestTop + height + gapY;
+        for (let i = bestStart; i < bestStart + span; i += 1) {
+          heights[i] = newHeight;
+        }
+      });
+
+      const canvasHeight = Math.max(...heights, 0);
+      grid.style.height = `${Math.max(0, canvasHeight - gapY)}px`;
+    };
+
+    let rafId = 0;
+    const scheduleRelayout = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(relayoutCanvas);
+    };
+
+    items.forEach((item) => {
+      const img = item.querySelector("img");
+      if (!img) return;
+      if (!img.complete) {
+        img.addEventListener("load", scheduleRelayout);
+        img.addEventListener("error", scheduleRelayout);
+      }
+    });
+
+    window.addEventListener("resize", scheduleRelayout);
+    window.addEventListener("load", scheduleRelayout);
+    scheduleRelayout();
   </script>
 </body>
 </html>
