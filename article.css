@@ -162,8 +162,8 @@ main a {
   line-height: 1.5;
   font-style: italic;
   text-align: left;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 blockquote {
@@ -175,4 +175,14 @@ blockquote {
   padding: 16px 20px;
   border-left: 3px solid rgba(21, 21, 21, 0.45);
   background: rgba(241, 241, 241, 0.55);
+}
+
+@media (max-width: 900px) {
+  .todo-figure img {
+    width: 100% !important;
+  }
+
+  .todo-figure.side-by-side {
+    grid-template-columns: 1fr;
+  }
 }
