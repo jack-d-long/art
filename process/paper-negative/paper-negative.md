@@ -17,9 +17,9 @@ It occurred to me that I could take much higher-quality images on photopaper usi
 
 ## The Handicap
 
-I should acklowledge that paper negatives are a technical downgrade in every sense from modern analog photographic processes. The sensitivity of modern film is anywhere from 8 to 500 times greater than the photosensitive paper used for traditional darkroom printing, and the achievable resolution of a 6x6cm paper negative is comparable to that of 35mm film (see [Optical Enlargement](#enlargement) for a comparison). Photographers who make paper negatives often do so on large-format cameras [[1]](#source-1), producing negatives 3.5 (for 4x5 film) to 14 (8x10) times larger than my Hasselblad is capable of. 
+I should acknowledge that paper negatives are a technical downgrade in every sense from modern analog photographic processes. The sensitivity of modern film is anywhere from 8 to 500 times greater than the photosensitive paper used for traditional darkroom printing, and the achievable resolution of a 6x6cm paper negative is comparable to that of 35mm film (see [Optical Enlargement](#enlargement) for a comparison). Photographers who make paper negatives often do so on large-format cameras [[1]](#source-1), producing negatives 3.5 (for 4x5 film) to 14 (8x10) times larger than my Hasselblad is capable of. 
 
-Still, I found making paper negatives attractive because they represented a distillation of the standard analog photographic process (see [Darkroom Printing](/process/darkroom-printing/)). Instead of using two sets of photosensitive media, chemistry, tools, and times, I am able to produce an original image in exact same manner that I produce copies thereof. There is also an advantage, however slight, in the speed and portability of a medium-format system compared ot large-format. The cameras are smaller and lenses, for the most part, are faster, allowing for images to be made outside of the traditional studio or static landscape environments. 
+Still, I found making paper negatives attractive because they represented a distillation of the standard analog photographic process (see [Darkroom Printing](/process/darkroom-printing/)). Instead of using two sets of photosensitive media, chemistry, tools, and times, I am able to produce an original image in exact same manner that I produce copies thereof. There is also an advantage, however slight, in the speed and portability of a medium-format system compared to large-format. The cameras are smaller and lenses, for the most part, are faster, allowing for images to be made outside of the traditional studio or static landscape environments. 
 
 ## 
 
@@ -101,7 +101,7 @@ $$
         \text{log}_2(500/200) = 1.32 \text{stops}
 $$
 
-stops of light with filters 00-3 applied. The difference is higher for filters 4-5, but not relevant to my goal of reducing constrast. Note that the paper's ISO sensitivity is rated on a different scale to photographic film: Ilford rates Multigrade RC at an equivalent film ISO of 3-6 [[2]](#source-2).
+stops of light with filters 00-3 applied. The difference is higher for filters 4-5, but not relevant to my goal of reducing contrast. Note that the paper's ISO sensitivity is rated on a different scale to photographic film: Ilford rates Multigrade RC at an equivalent film ISO of 3-6 [[2]](#source-2).
 
 I liked the highlight detail of the #0 best when digitally inverted, especially compared to the pictured print calibration chart. This became my 'default' filter in further testing.
 
@@ -118,7 +118,7 @@ SRC: assets/process/paper-negative/test2.png
 Caption: the second paper negative test, encompassing a few more lighting conditions. 
 
 
- Outdoors, the higher blue light present in bright sunlight made a 1-stop underexposure (relative to meter readings at ISO 6) render best. To investigate the reciprocity failure so common in film, I found a poorly-lit scene at night on the under-construction White Hall. Exposed as metered, the combination of warmer interior and lamppost lighting and low-intensity reciprocity failure contributed to a Very Thin Negative. While there was some information in the highlights (extracted with significant digital post-processing), the final imaage is clearly distinct in quality from those taken during the day. If, during a masochist streak, I ever decide to shoot paper at nighttime again, I will increase my exposure by a few stops to accommodate the paper's lack of sensitivity to the red end of the visible spectrum and its low intensity reciprocity failure. 
+ Outdoors, the higher blue light present in bright sunlight made a 1-stop underexposure (relative to meter readings at ISO 6) render best. To investigate the reciprocity failure so common in film, I found a poorly-lit scene at night on the under-construction White Hall. Exposed as metered, the combination of warmer interior and lamppost lighting and low-intensity reciprocity failure contributed to a Very Thin Negative. While there was some information in the highlights (extracted with significant digital post-processing), the final image is clearly distinct in quality from those taken during the day. If, during a masochist streak, I ever decide to shoot paper at nighttime again, I will increase my exposure by a few stops to accommodate the paper's lack of sensitivity to the red end of the visible spectrum and its low intensity reciprocity failure. 
 
 SRC: assets/process/paper-negative/white-negative.png
 Caption: The negative produced by image number 4 above. Note the lack of any information in the highlights discernible to the naked eye. 
@@ -246,7 +246,7 @@ I enlarged the negative marked in Test 3 with the emulsion facing downwards in m
 SRC: assets/process/paper-negative/enlarged.png
 Caption: An enlarged paper negative, printed on 8"x10" Ilford Multigrade RC Pearl and developed in standard chemistry [[3]](#source-3)
 
-In a straight print on 8"x10" paper, I found that I had to increase contrast to #4 to reach maximum density and maintain highlights close to paper-white. The doubled exposure time required of Ilford Multigrade filters #4 and #5 compared to #00 - #3 [[2]](#source-2), combined with the light loss through the negagtive's paper backing, resulted in a significantly more intense exposure (f/5.6, 40 seconds) than a standard 8"x10" print. The wide-open aperture isn't ideal for the sharpness of the final print, but I doubt that the lens was the bottleneck in this case. It's likely that the resolution and emulsion of the negative itself was the cause of this fairly unsharp print. 
+In a straight print on 8"x10" paper, I found that I had to increase contrast to #4 to reach maximum density and maintain highlights close to paper-white. The doubled exposure time required of Ilford Multigrade filters #4 and #5 compared to #00 - #3 [[2]](#source-2), combined with the light loss through the negative's paper backing, resulted in a significantly more intense exposure (f/5.6, 40 seconds) than a standard 8"x10" print. The wide-open aperture isn't ideal for the sharpness of the final print, but I doubt that the lens was the bottleneck in this case. It's likely that the resolution and emulsion of the negative itself was the cause of this fairly unsharp print. 
 
 
 ## Conclusions
