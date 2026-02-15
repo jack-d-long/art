@@ -1,0 +1,125 @@
+:root {
+  --ink: #151515;
+  --paper: #F1F1F1;
+}
+
+body {
+  margin: 0;
+  padding: 88px 32px 56px;
+  position: relative;
+  font-family: "DM Sans", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--paper);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("/assets/index/texture2.jpeg");
+  background-position: center;
+  background-size: cover;
+  opacity: 0.07;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.back-link {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  color: var(--ink);
+  font-family: sans-serif;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.back-link:hover {
+  opacity: 0.7;
+}
+
+main {
+  max-width: 75ch;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: clamp(40px, 8vw, 84px);
+  line-height: 0.95;
+  font-family: sans-serif;
+}
+
+.byline {
+  margin: 10px 0 50px;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  font-family: sans-serif;
+}
+
+p {
+  margin: 0 0 16px;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+.equation-sample {
+  margin: 18px 0 24px;
+  font-size: 20px;
+  overflow-x: auto;
+}
+
+main h2 {
+  margin: 36px 0 12px;
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.1;
+  font-family: sans-serif;
+}
+
+main h3 {
+  margin: 28px 0 10px;
+  font-size: clamp(22px, 4vw, 30px);
+  line-height: 1.2;
+  font-family: sans-serif;
+}
+
+main a {
+  color: inherit;
+}
+
+.todo-figure {
+  margin: 18px 0 26px;
+}
+
+.todo-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid rgba(21, 21, 21, 0.25);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  background: #ddd;
+}
+
+.todo-figure figcaption {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+}
