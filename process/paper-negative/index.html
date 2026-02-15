@@ -37,6 +37,7 @@
 
     main {
       max-width: 72ch;
+      margin: 0 auto;
     }
 
     h1 {
@@ -50,14 +51,32 @@
       line-height: 1.6;
       font-size: 18px;
     }
+
+    .equation-sample {
+      margin: 18px 0 24px;
+      font-size: 20px;
+    }
   </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
   <a class="back-link" href="/process/">back</a>
   <main>
     <h1>Paper Negative</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus leo vitae purus consequat, at sagittis justo congue. In hendrerit mauris sed lorem egestas, non vehicula leo luctus.</p>
+    <p class="equation-sample">\[
+      f(x) = \int_{-\infty}^{\infty} e^{-t^2}\,dt = \sqrt{\pi}
+    \]</p>
     <p>Vivamus ac pharetra neque. Sed semper, ante vel feugiat scelerisque, ipsum velit malesuada nulla, ut feugiat est sem in odio. Integer in sem ac neque faucibus semper sed in magna.</p>
+    <p>Inline test: \( e^{i\pi} + 1 = 0 \).</p>
     <p>Phasellus eu ex a neque sodales condimentum. Nullam aliquam ultrices dui, nec fermentum risus ultricies id. Morbi vel erat augue. Curabitur aliquet placerat quam, eu consequat tortor luctus eu.</p>
   </main>
 </body>
