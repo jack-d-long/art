@@ -113,13 +113,45 @@ main a {
   width: 100%;
   height: auto;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
   border: 1px solid rgba(21, 21, 21, 0.25);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
   background: #ddd;
+}
+
+.todo-figure.side-by-side {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.todo-figure.side-by-side img {
+  width: 100%;
+  margin: 0;
+}
+
+.todo-figure.side-by-side figcaption {
+  grid-column: 1 / -1;
 }
 
 .todo-figure figcaption {
   margin-top: 8px;
   font-size: 15px;
   line-height: 1.5;
+  font-style: italic;
+  text-align: left;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+blockquote {
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 68ch;
+  margin: 24px 0 28px;
+  padding: 16px 20px;
+  border-left: 3px solid rgba(21, 21, 21, 0.45);
+  background: rgba(241, 241, 241, 0.55);
 }

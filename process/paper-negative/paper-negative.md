@@ -3,31 +3,85 @@
 
 In December of 2025, I received a Hasselblad cut film adapter (41017) and four film holders (51012), compatible with the 500-series camera bodies. 
 
-TODO: film back, film holder images. 
+SRC: assets/process/paper-negative/film-holder.png
+
+Caption: Hasselblad film holder 51012.
 
 In searching for ways of using these items, I stumbled upon some paper negatives I had shot in September of 2025 on a pinhole camera, as part of a class assignment. 
 
-TODO: pinhole negatives, positives. 
+SRC: assets/process/paper-negative/pinhole.jpg
 
-caption: Pinhole negatives and contact-printed positives on Ilford MGRC Deluxe Pearl. Negatives were shot unfiltered and developed in Ilford Multigrade Developer 1:18, positives were developed in the same, but mixed to the standard 1:9. 
+caption: Pinhole camera contact-printed positives on Ilford MGRC Deluxe Pearl. Negatives were shot unfiltered and developed in Ilford Multigrade Developer 1:18, positives were developed in the same, at the standard 1:9. 
 
 It occurred to me that I could take much higher-quality images on photopaper using my own (or similar to my own, given that my 500C is waiting in limbo for a high-speed nylon shutter gear) Hasselblad body and lens than with a punctured tin can.
 
 ## The Handicap
 
-I should acklowledge that paper negatives are a technical downgrade in every sense from modern analog photographic processes. The paper is absurdly slow compared to modern film (Ilford cites an ISO rating of 3-6 for its Multigrade RC papers), and the achievable resolution of a 6x6cm paper negative is comparable to that of 35mm film (see TODO:link Optical Enlargement for a comparison). Photographers who make paper negatives often do so on large-format cameras [[1]](#source-1), producing negatives 3.5 (for 4x5 film) to 14 (8x10) times larger than my Hasselblad is capable of. 
+I should acklowledge that paper negatives are a technical downgrade in every sense from modern analog photographic processes. The sensitivity of modern film is anywhere from 8 to 500 times greater than the photosensitive paper used for traditional darkroom printing, and the achievable resolution of a 6x6cm paper negative is comparable to that of 35mm film (see [Optical Enlargement](#enlargement) for a comparison). Photographers who make paper negatives often do so on large-format cameras [[1]](#source-1), producing negatives 3.5 (for 4x5 film) to 14 (8x10) times larger than my Hasselblad is capable of. 
 
+Still, I found making paper negatives attractive because they represented a distillation of the standard analog photographic process (see [Darkroom Printing](/process/darkroom-printing/)). Instead of using two sets of photosensitive media, chemistry, tools, and times, I am able to produce an original image in exact same manner that I produce copies thereof. There is also an advantage, however slight, in the speed and portability of a medium-format system compared ot large-format. The cameras are smaller and lenses, for the most part, are faster, allowing for images to be made outside of the traditional studio or static landscape environments. 
 
-Still, I found making paper negatives attractive because they represented a distillation of the standard analog photographic process (TODO: link to darkroom printing article). Instead of using two sets of photosensitive media, chemistry, tools, and times, I am able to produce an original image in exact same manner that I produce copies thereof. There is also an advantage, however slight, in the speed and portability of a medium-format system compared ot large-format. The cameras are smaller and lenses, for the most part, are faster, allowing for images to be made outside of the traditional studio or static landscape environments. 
+## 
 
+My class in September developed pinhole paper negatives in diluted chemistry to tame the high contrast of the photopaper, especially when exposed to afternoon daylight (the only available continuous source intense enough to produce an image). That the paper has higher contrast when exposed to daylight wasn't immediately evident from the Ilford Multigrade RC datasheet [[2]](#source-2), at least to my reading. We see below that the paper appears to be more sensitive to *longer*-wavelength yellow and green light than the shorter-wavelength blue light more intense in afternoon daylight. 
 
-My class in September developed pinhole paper negatives in diluted chemistry to tame the high contrast of the photopaper, especially when exposed to daylight [[2]](#source-2). In standard developer, any exposure long enough to hit the maximum density of the paper (Dmax) tended to leave very little detail in highlights of the positive image, requiring severe underexposure and limiting the already-slim dynamic range of the paper negative. The simplest fix, as determined by the Intro Photography instructor team, was to have students develop in half-strength developer instead. 
+SRC: /assets/process/paper-negative/mgrc-spectral-sensitivity.png, /assets/process/paper-negative/sunlight-spectrogram.png
+Caption: Ilford Multigrade RC Deluxe spectral sensitivity [[2]](#source-2) and daylight spectrogram [[10]](#source-10) 
 
-TODO: ilford MGRC datasheet frequency response [[2]](#source-2)
+Confusingly, Ilford does not cite the light source used to take this measurement. However, spectrograms displayed in the Ilford Multigrade IV [[7]](#source-7) and Ilfospeed RC [[8]](#source-8) datasheets citing 2850K tungsten sources lead me to believe that this was the light used to measure the Multigrade RC Deluxe spectrogram.  
+
+SRC: /assets/process/paper-negative/tungsten-spectrogram.png
+Caption: Spectrogram of a tungsten halogen lamp [[9]](#source-9) and daylight at various times of day. The intensity of the tungsten spectrum peaks around 600nm (yellow).
+
+Tungsten is strongly biased towards the warm end of the spectrum, so it's easy to see how a measurement of paper sensitivity taken with this light might lead us astray. 
+
+In the Ilford Multigrade Contrast Control guide [[4]](#source-4), we find the following:
+> 
+> All chloro-bromide (black and white) emulsions are
+> blue sensitive with a slight sensitivity to green light.
+> To make an emulsion sensitive to colours in
+> addition to blue, sensitising dyes need to be
+> added. 
+> 
+> ...
+> 
+> 
+> When the paper is exposed to blue light, all parts
+> of the emulsion react and contribute equally to the
+> final image. This image is of high contrast because
+> of the additive effect produced by three emulsions
+> with the same speed and contrast. The resultant
+> curve has a narrow exposure range and is thus of
+> high contrast. 
+> 
+> 
+> When the paper is exposed to green light, only
+> the parts of the emulsion with the larger amounts
+> of green sensitising dye react initially. This is
+> because the three emulsions have very different
+> sensitivities to green light. This image is of low
+> contrast because of the additive effect produced
+> by three emulsions with different speeds to green
+> light, but with the same inherent contrast. The resultant curve has a very much wider exposure
+> range and is thus of low contrast.
+> 
+> By varying the proportion of blue to green light, a
+> contrast range between these two extremes can be
+> obtained. The simplest way of controlling the
+> colour of the light reaching the emulsion during
+> exposure is by the use of filters: a magenta filter
+> absorbs green light and transmits blue; a yellow
+> filter absorbs blue light and transmits green. In this
+> way, high and low contrast images can be made.
+
+We are correct then, in assuming that the blue spectral content of daylight results in a higher-contrast paper negative despite the spectral sensitivity presented in the Multigrade RC Deluxe datasheet.  
+
+In standard developer, any daylight exposure long enough to hit the maximum density of the paper (Dmax) in the pinhole cameras tended to leave very little detail in highlights of the positive image. Retaining such detail required severe underexposure, limiting the already-slim dynamic range of the paper negative. The simplest fix, as determined by the Cornell Intro Photography instructor team, was to have students develop in half-strength developer instead. 
 
 Mixing diluted developer seemed to be a step away from the streamlined process that drew me to paper negatives in the first place, so I resolved to find another way to use the same chemistry for both my negatives and final prints. To take advantage of the entire dynamic range of the photopaper (i.e. expose enough to reach Dmax and still maintain usable contrast), I used a set of Ilford Multigrade enlarger filters placed in front of the lens during exposure. 
 
-TODO: enlarger filters
+SRC: assets/process/paper-negative/multigrade-filters.jpg
+Caption: Ilford Multigrade enlarger filters. More magenta filters absorb green light and transmit blue; more yellow filters absorb blue light and transmit green [[4]](#source-4).
 
 ## Testing
 
@@ -38,7 +92,7 @@ Making an intentionally-exposed negative is a necessary, but not sufficient, con
 My first set of tests was to dial in proper exposure and contrast of the negatives in an evenly-lit interior scene: the Tjaden Hall DIM lab. 
 
 
-TOOD: test 1
+SRC: assets/process/paper-negative/test1.png
 Caption: the first paper negative test. 
 
 I found that, unfiltered, a slight underexposure of the scene (compared to the suggestion of an incident lightmeter at ISO 6) yielded the best results in standard [[3]](#source-3) chemistry. With filters 0-2 applied, an exposure at or slightly (<1 stop) above metered was best. Ilford mentions that no exposure compensation is necessary for filters 00-3 [[4]](#source-4), but this appears to be true only when moving between filters 00-3. Per Ilford's Multigrade RC datasheet [[2]](#source-2), the paper is rated at ISO P500 unfiltered, and ISO P200 with filters 00-3 applied.  Therefore, the paper loses 
@@ -51,8 +105,8 @@ stops of light with filters 00-3 applied. The difference is higher for filters 4
 
 I liked the highlight detail of the #0 best when digitally inverted, especially compared to the pictured print calibration chart. This became my 'default' filter in further testing.
 
-TODO: #0 inverted negative, color print chart (iphone)
-Caption: #0 negative, digitally inverted, and color print calibration chart (captured on my iPhone 16). 
+SRC: assets/process/paper-negative/print-chart-comparison.png
+Caption: #0 negative, digitally inverted, and color print calibration chart.
 
 NOTE: In most of these tests, I processed the negatives digitally. While not necessarily in line with my previously-stated goal of process distillation, I used digital inspection and processing to isolate the effects of my exposure and development on the negatives themselves, as opposed to later darkroom prints. While certainly an important step in the process, making darkroom prints requires additional technical consideration beyond producing a well-exposed negative. I decided to dial this only after I became confident in exposing consistent negatives. 
 
@@ -60,13 +114,13 @@ NOTE: In most of these tests, I processed the negatives digitally. While not nec
 
 For my second set of tests, I attempted to capture the effect of different lighting conditions on the paper negatives.
 
-TODO: Test 2 
+SRC: assets/process/paper-negative/test2.png
 Caption: the second paper negative test, encompassing a few more lighting conditions. 
 
 
  Outdoors, the higher blue light present in bright sunlight made a 1-stop underexposure (relative to meter readings at ISO 6) render best. To investigate the reciprocity failure so common in film, I found a poorly-lit scene at night on the under-construction White Hall. Exposed as metered, the combination of warmer interior and lamppost lighting and low-intensity reciprocity failure contributed to a Very Thin Negative. While there was some information in the highlights (extracted with significant digital post-processing), the final imaage is clearly distinct in quality from those taken during the day. If, during a masochist streak, I ever decide to shoot paper at nighttime again, I will increase my exposure by a few stops to accommodate the paper's lack of sensitivity to the red end of the visible spectrum and its low intensity reciprocity failure. 
 
-Todo: white hall exposure, negative
+SRC: assets/process/paper-negative/white-negative.png
 Caption: The negative produced by image number 4 above. Note the lack of any information in the highlights discernible to the naked eye. 
 
 
@@ -75,10 +129,10 @@ Eagle-eyed viewers might notice the row of flat, thin images below. To investiga
 ## A Diversion: What Strobe Guide Number Really Means 
 
 
-I shot the above scene with an on-camera Yongnuo YN560 speedlight rated at a maximum power guide number ($\text(GN)$) of 58m at ISO 100 and 135mm zoom [[5]](#source-5). At 50mm zoom (approximately the full-frame equivalent of the 80mm lens I have attached to the Hasselblad), the GN reduces to 42m. I
+I shot the above scene with an on-camera Yongnuo YN560 speedlight rated at a maximum power guide number ($\text{GN}$) of 58m at ISO 100 and 135mm zoom [[5]](#source-5). At 50mm zoom (approximately the full-frame equivalent of the 80mm lens I have attached to the Hasselblad), the GN reduces to 42m. I
 
-TODO: gear flick
-Caption: The Hasselblad 500C and flash. For those who would like to replicate this setup, ensure that you purchase a PC-to-PC strobe sync cable, *not* a PC to 2.5mm cable, or any other combination. 
+<!-- TODO: gear flick
+Caption: The Hasselblad 500C and flash. For those who would like to replicate this setup, ensure that you purchase a PC-to-PC strobe sync cable, *not* a PC to 2.5mm cable, or any other combination.  -->
 
  We can express the guide number in terms of the subject's distance and the lens' f-stop: 
 $$
@@ -94,7 +148,7 @@ Back to the story.
 F-stop, as the ratio of the lens' focal length to its aperture diameter, is unitless, meaning that GN is expressed in units of distance. For example, if shooting a subject 4 meters away at f/8 and ISO 100, you would calculate a guide number of 
 
 $$
-\text(GN, desired) = 4 \si(meters) \times 8 = 24 \si(meters)
+\mathrm{GN}_{\text{desired}} = 4 \mathrm{m} \times 8 = 24 \mathrm{m}
 $$
 
 But wait! My flash has a guide number of 42m! Where do I go from here? 
@@ -115,7 +169,7 @@ $$
 \frac{P_2}{P_1} = \left(\frac{\text{GN}_2}{\text{GN}_1}\right)^2
 $$
 
-So if your flash is rated $\text{GN}_\text{full} = 42\si(m)$ at full power, and you only need $\text{GN}_\text{need} = 24\si(m)$, the required power fraction is:
+So if your flash is rated $\mathrm{GN}_{\text{full}} = 42\,\mathrm{m}$ at full power, and you only need $\mathrm{GN}_{\text{desired}} = 24\,\mathrm{m}$, the required power fraction is:
 
 $$
 \frac{P_\text{need}}{P_\text{full}} =
@@ -141,35 +195,69 @@ Given my GN at ISO 100 of 42m, a subject distance of 1m, and an f-stop of 4, I h
 From the above equations, I can calculate my desired GN 
 
 $$
-\text{GN, desired} = 1~\si(meters) \times 4 = 4\si(meters)
+\mathrm{GN}_{\text{desired}} = 1~\mathrm{m} \times 4 = 4\,\mathrm{m}
 $$
 
 and convert my flash's full-power GN to the nominal ISO (6) of my photopaper
 
 $$
-\text{GN, full} = 42 \times \sqrt(\frac{\text{ISO 6}}{\text{ISO 100}}) \approx 10.3.
+\mathrm{GN}_{\text{full}} = 42 \times \sqrt(\frac{\text{ISO 6}}{\text{ISO 100}}) \approx 10.3.
 $$
 
 My desired power fraction $\text{P}$ is then 
 
 $$
 
-\text{P} = (\frac{\text{GN, desired}}{\text{GN, full}})^2 = (\frac{4}{10.3})^2 \approx 1/6.
+\text{P} = \left(\frac{\mathrm{GN}_{\text{desired}}}{\mathrm{GN}_{\text{full}}}\right)^2 = \left(\frac{4}{10.3}\right)^2 \approx 1/6.
 
 $$
 
 To account for any number of factors I could've gotten wrong with the above in the moment, I decided to expose at 1/4 power. Given the daylight-balanced 5600K light [[5]](#source-5) from the YN560, and the outdoor results above, I expected overexposure at all but a #00 filter. 
 
-This was not the case. While all negatives displayed some information, they were noticeably thin. 
+This was not the case. While all negatives displayed some information, they were noticeably thin (apart from the daylight through a window in the background of the unfiltered image).
 
-TODO: negs compared to pos for mork leo flash
+SRC: assets/process/paper-negative/leo-mork.png
 Caption: Negatives and digitally-inverted positives for the #00 and unfiltered strobe exposures from Test 2. 
 
 This test wasn't quite conclusive, especially considering the odd patterns on the #1 and #0 images (perhaps accidental fogging of the paper while re-inserting the darkslide?). 
 
 I hoped to settle the matter with my third set of negatives. 
 
-coming soon
+SRC: assets/process/paper-negative/test3.png
+Caption: the third paper negative test. 
+
+This time, I investigated contrast control once again, but with two stops of additional exposure to compensate for the thin negatives observed above. With flash output increased to maximum power, I was finally able to take advantage of the full dynamic range of the paper. I attribute this effect to high-intensity reciprocity failure, acknowledging that Ilford Multigrade photopaper was likely not designed for exposure times on the order of a flash pulse. With my particular speedlight, two additional stops of light seemed to suffice, but more work is to be done with other off-camera strobes to further analyze high-intensity reciprocity failure. 
+
+The #1 filter appeared to make the best exposure of the first row of images, but was not significantly different from the #0. With that in mind, I played it safe and exposed the second row of negatives using a #0 filter.
+
+I had never experimented with pre-flashing paper [[11]](#source-11) while making darkroom prints before, but paper negatives seemed like as good a place as any to try it. I found that, for my particular enlarger setup, 1 second of baseline exposure with a #2 filter at f/22 was the most intense exposure which did not produce any silver on the paper when developed. 
+
+I pre-flashed half of the negatives under test with this baseline, and left the others untouched. Unfortunately, due to a loading error on my part, the last exposure was unusable. 
+
+As another variable, I tested the level of ambient exposure, noting that leaf shutters of Hasselblad V mount lenses allow flash sync at all speeds. It was difficult to determine any effect of pre-flashing, so I will likely abandon it in the future. However, increasing ambient exposure increased the luminance of the image's background (a blackboard) as expected.
+
+
+## Enlargement
+
+Armed with a formula for producing workable paper negatives, I finally set off to the final leg of the race: making analog prints. 
+
+I enlarged the negative marked in Test 3 with the emulsion facing downwards in my negative carrier. In this orientation, the paper backing of the negative acts as a (wildly inefficient) diffusion filter for the negative, and adds an texture to the final print that I found pleasing. 
+
+SRC: assets/process/paper-negative/enlarged.png
+Caption: An enlarged paper negative, printed on 8"x10" Ilford Multigrade RC Pearl and developed in standard chemistry [[3]](#source-3)
+
+In a straight print on 8"x10" paper, I found that I had to increase contrast to #4 to reach maximum density and maintain highlights close to paper-white. The doubled exposure time required of Ilford Multigrade filters #4 and #5 compared to #00 - #3 [[2]](#source-2), combined with the light loss through the negagtive's paper backing, resulted in a significantly more intense exposure (f/5.6, 40 seconds) than a standard 8"x10" print. The wide-open aperture isn't ideal for the sharpness of the final print, but I doubt that the lens was the bottleneck in this case. It's likely that the resolution and emulsion of the negative itself was the cause of this fairly unsharp print. 
+
+
+## Conclusions
+
+
+Ultimately, shooting paper negatives on a medium-format system is a deliberate technical regression that has made me think more deeply about the photographic process. My primary hurdle wasn't the inherent handicap of low sensitivity, but the spectral mismatch between the paper and the world, requiring me to consider the color of my environment in a way I hadn't experienced with standard panchromatic black and white film, or even color digital photography.
+
+The most interesting technical conclusion I observed, especially as a photographer who uses strobes extensively, was the high-intensity reciprocity compensation required for a workable exposure with them. Two stops was enough for my speedlight, but I'll need to test a wider range of equipment to verify the bounds of Ilford Multigrade RC's reciprocity. 
+
+I also intend to make more enlargements of my paper negatives. 8"x10" paper seems to be the limit of the negative resolution, but this certainly isn't a barrier to creativity. On the whole, I feel more empowered now than I did before to make compelling images from paper negatives. That is, after all, the goal of any such technical testing. 
+
 
 
 
@@ -197,14 +285,24 @@ coming soon
 
 ## Sources
 
-<a id="source-1"></a>[1] Ian Gamester, https://www.ilfordphoto.com/paper-negatives/. Tim Layton, https://timlaytonfineart.com/2024/09/07/the-calotype-paper-negative/. Ethan Doyle, https://ethandoyleprojects.com/8x10-paper-negatives. 
+<a id="source-1"></a>[1] Ian Gamester, [https://www.ilfordphoto.com/paper-negatives/](https://www.ilfordphoto.com/paper-negatives/). Tim Layton, [https://timlaytonfineart.com/2024/09/07/the-calotype-paper-negative/](https://timlaytonfineart.com/2024/09/07/the-calotype-paper-negative/). Ethan Doyle, [https://ethandoyleprojects.com/8x10-paper-negatives](https://ethandoyleprojects.com/8x10-paper-negatives). 
 
-<a id="source-2"></a>[2] Ilford Multigrade RC Datasheet, https://www.ilfordphoto.com/wp/wp-content/uploads/2021/01/MULTIGRADE-RC-Papers-J20.pdf
+<a id="source-2"></a>[2] Ilford Multigrade RC Datasheet, [https://www.ilfordphoto.com/wp/wp-content/uploads/2021/01/MULTIGRADE-RC-Papers-J20.pdf](https://www.ilfordphoto.com/wp/wp-content/uploads/2021/01/MULTIGRADE-RC-Papers-J20.pdf)
 
 <a id="source-3"></a>[3] Unless otherwise specified, standard chemistry refers to Ilford Multigrade Developer 1:9, Ilford Rapid Fix 1:9, Ilfostop XX:XX, for 120 seconds, 30 seconds, and 120 seconds, respectively. 
 
-<a id="source-4"></a>[4] Ilford Multigrade Contrast Control, https://www.ilfordphoto.com/wp/wp-content/uploads/2017/03/Contrast-control-for-Ilford-Multigrade.pdf
+<a id="source-4"></a>[4] Ilford Multigrade Contrast Control, [https://www.ilfordphoto.com/wp/wp-content/uploads/2017/03/Contrast-control-for-Ilford-Multigrade.pdf](https://www.ilfordphoto.com/wp/wp-content/uploads/2017/03/Contrast-control-for-Ilford-Multigrade.pdf)
 
-<a id="source-5"></a>[5] Yongnuo YN560 User Manual, https://www.yongnuo.fr/wp-content/uploads/notices/YN-560_en.pdf
+<a id="source-5"></a>[5] Yongnuo YN560 User Manual, [https://www.yongnuo.fr/wp-content/uploads/notices/YN-560_en.pdf](https://www.yongnuo.fr/wp-content/uploads/notices/YN-560_en.pdf)
 
-<a id="source-6"></a>[6] Flash Sync Speed, https://www.newschoolers.com/news/read/Flash-Sync-Speed-Explained 
+<a id="source-6"></a>[6] Flash Sync Speed, [https://www.newschoolers.com/news/read/Flash-Sync-Speed-Explained](https://www.newschoolers.com/news/read/Flash-Sync-Speed-Explained) 
+
+[7] Ilford Multigrade IV RC Datasheet, [https://estudiocasanueva.com.ar/archivo/Imgivrc.pdf](https://estudiocasanueva.com.ar/archivo/Imgivrc.pdf)
+
+[8] Ilford Ilfospeed RC Deluxe Datasheet, [https://www.ilfordphoto.com/amfile/file/download/file/1893/product/1440/](https://www.ilfordphoto.com/amfile/file/download/file/1893/product/1440/)
+
+[9] Tungsten Spectrogram, Thoms, Lars-Jochen & Girwidz, Raimund. (2013). Experimenting from a Distance: Optical Spectrometry via the Internet. 
+
+[10] Daylight Spectrogram, Kotzabasis, Kiriakos & Navakoudis, Eleni & Vakalounakis, Demetrios. (2014). Photobiological Control of Crop Production and Plant Diseases.
+
+[11] Pre-flashing Photographic Paper, [https://www.photrio.com/forum/threads/pre-flashing-paper.97777/](https://www.photrio.com/forum/threads/pre-flashing-paper.97777/)
