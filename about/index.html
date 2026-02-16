@@ -21,6 +21,7 @@
       --indacar-text-gap-right: 24px;
       --indacar-shape-margin: 30px;
       --indacar-offset-left-mobile: -100px;
+      --indacar-offset-top-mobile: 0px;
       --indacar-offset-bottom-mobile: 12px;
       --indacar-text-gap-right-mobile: 14px;
       --indacar-shape-margin-mobile: 10px;
@@ -122,7 +123,8 @@
       height: auto;
       display: block;
       margin: var(--indacar-offset-top) var(--indacar-text-gap-right) var(--indacar-offset-bottom) var(--indacar-offset-left);
-      shape-outside: url("/assets/about/inthecar.webp");
+      -webkit-shape-outside: url("/assets/about/indacar-small.png");
+      shape-outside: url("/assets/about/indacar-small.png");
       shape-image-threshold: 0.25;
       shape-margin: var(--indacar-shape-margin);
     }
@@ -169,9 +171,7 @@
 
       .indacar-wrap {
         width: var(--indacar-size-mobile);
-        margin-left: var(--indacar-offset-left-mobile);
-        margin-right: var(--indacar-text-gap-right-mobile);
-        margin-bottom: var(--indacar-offset-bottom-mobile);
+        margin: var(--indacar-offset-top-mobile) var(--indacar-text-gap-right-mobile) var(--indacar-offset-bottom-mobile) var(--indacar-offset-left-mobile);
         shape-margin: var(--indacar-shape-margin-mobile);
       }
       /* .pfp-layer {
