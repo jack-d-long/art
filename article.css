@@ -136,9 +136,14 @@ main a {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid rgba(21, 21, 21, 0.25);
+  border: 0;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
   background: #ddd;
+}
+
+.todo-figure img[src$=".png"],
+.todo-figure img[src*=".png?"] {
+  background: transparent;
 }
 
 .todo-figure.side-by-side {

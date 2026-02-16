@@ -131,8 +131,8 @@ Eagle-eyed viewers might notice the row of flat, thin images below. To investiga
 
 I shot the above scene with an on-camera Yongnuo YN560 speedlight rated at a maximum power guide number ($\text{GN}$) of 58m at ISO 100 and 135mm zoom [[5]](#source-5). At 50mm zoom (approximately the full-frame equivalent of the 80mm lens I have attached to the Hasselblad), the GN reduces to 42m. I
 
-<!-- TODO: gear flick
-Caption: The Hasselblad 500C and flash. For those who would like to replicate this setup, ensure that you purchase a PC-to-PC strobe sync cable, *not* a PC to 2.5mm cable, or any other combination.  -->
+SRC: assets/process/paper-negative/strobe-setup.png
+Caption: The Hasselblad 500C and flash. For those who would like to replicate this setup, ensure that you purchase a PC-to-PC strobe sync cable, *not* a PC to 2.5mm cable, or any other combination.
 
  We can express the guide number in terms of the subject's distance and the lens' f-stop: 
 $$
