@@ -63,9 +63,9 @@ Ultramarathons are often called 'the world's fastest eating competition'. In add
 SRC: ![alt text](../../assets/process/beebe-backyard/purplepotato.jpeg)
 Caption: A purple salt potato, half-eaten at 12:00PM after 24 miles. I finished it just as I passed the Beebe Lake dam. 
 
-I ran with Molly for almost 5 laps. Molly studies biomedical engineering, is a member of Cornell's Nordic Ski team, and is an Ironman. Sophia, who started running at 9:00 AM, found her way into the race through Molly. When I asked them why they decided to run, they shrugged and said 'why not?'. They each made it over 12 laps, sitting some out along the way. They knew that this, along with Sophia's late start, would put them out of the championship running, but to them the race was its own reward. 
+I ran with Molly for almost 5 laps. Molly studies biomedical engineering, is a member of Cornell's Nordic Ski team, and is an Ironman. Claire, who started running at 9:00 AM, found her way into the race through Molly. When I asked them why they decided to run, they shrugged and said 'why not?'. They each made it over 12 laps, sitting some out along the way. They knew that this, along with Claire's late start, would put them out of the championship running, but to them the race was its own reward. 
 ![alt text](../../assets/process/beebe-backyard/backyard-5473.jpg)
-Caption: Molly (left) and Sophia at 11:55 AM. 
+Caption: Molly (left) and Claire at 11:55 AM. 
 
 
 I took a photo of myself after making it a marathon, thinking about how there would probably be one or two more marathons before the day was over. You can see it on my face. This was the last photo I took of the day. 
