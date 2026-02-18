@@ -85,7 +85,7 @@ for the next seven hours, I ran with a group of four: Lily, Andrew, and Michael.
 SRC: ![alt text](../../assets/process/beebe-backyard/scoreboard.jpeg)
 Caption: The scoreboard at 9:00 PM. Image courtesy of Isla Chadsey. 
 
-I dropped out at midnight, after approximately 65 miles. The Lily, Andrew, and Michael continued on to their 18th lap, and decided to end the race afterwards on a three-way tie. 
+I dropped out at midnight, after running approximately 65 miles (exactly 2.5 marathons, as I later found out). The Lily, Andrew, and Michael continued on to their 18th lap, and decided to end the race afterwards on a three-way tie. 
 
 
 
