@@ -2,8 +2,10 @@
   "name": "art-site",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "images": "node scripts/build-images.js"
+    "images": "node scripts/build-images.js",
+    "typst": "node scripts/build-typst.js"
   },
   "devDependencies": {
     "sharp": "^0.33.4"
