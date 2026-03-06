@@ -17,9 +17,9 @@ It occurred to me that I could take much higher-quality images on photopaper usi
 
 ## The Handicap
 
-I should acknowledge that paper negatives are a technical downgrade in every sense from modern analog photographic processes. The sensitivity of modern film is anywhere from 8 to 500 times greater than the photosensitive paper used for traditional darkroom printing, and the achievable resolution of a 6x6cm paper negative is comparable to that of 35mm film (see [Optical Enlargement](#enlargement) for a comparison). Photographers who make paper negatives often do so on large-format cameras [[1]](#source-1), producing negatives 3.5 (for 4x5 film) to 14 (8x10) times larger than my Hasselblad is capable of. 
+I should acklowledge that paper negatives are a technical downgrade in every sense from modern analog photographic processes. The sensitivity of modern film is anywhere from 8 to 500 times greater than the photosensitive paper used for traditional darkroom printing, and the achievable resolution of a 6x6cm paper negative is comparable to that of 35mm film (TODO: agent link to the optical enlargement section). Photographers who make paper negatives often do so on large-format cameras [[1]](#source-1), producing negatives 3.5 (for 4x5 film) to 14 (8x10) times larger than my Hasselblad is capable of. 
 
-Still, I found making paper negatives attractive because they represented a distillation of the standard analog photographic process (see [Darkroom Printing](/process/darkroom-printing/)). Instead of using two sets of photosensitive media, chemistry, tools, and times, I am able to produce an original image in exact same manner that I produce copies thereof. There is also an advantage, however slight, in the speed and portability of a medium-format system compared to large-format. The cameras are smaller and lenses, for the most part, are faster, allowing for images to be made outside of the traditional studio or static landscape environments. 
+Still, I found making paper negatives attractive because they represented a distillation of the standard analog photographic process (TODO: link to darkroom printing section). Instead of using two sets of photosensitive media, chemistry, tools, and times, I am able to produce an original image in exact same manner that I produce copies thereof. There is also an advantage, however slight, in the speed and portability of a medium-format system compared ot large-format. The cameras are smaller and lenses, for the most part, are faster, allowing for images to be made outside of the traditional studio or static landscape environments. 
 
 ## 
 
@@ -101,7 +101,7 @@ $$
         \text{log}_2(500/200) = 1.32 \text{stops}
 $$
 
-stops of light with filters 00-3 applied. The difference is higher for filters 4-5, but not relevant to my goal of reducing contrast. Note that the paper's ISO sensitivity is rated on a different scale to photographic film: Ilford rates Multigrade RC at an equivalent film ISO of 3-6 [[2]](#source-2).
+stops of light with filters 00-3 applied. The difference is higher for filters 4-5, but not relevant to my goal of reducing constrast. Note that the paper's ISO sensitivity is rated on a different scale to photographic film: Ilford rates Multigrade RC at an equivalent film ISO of 3-6 [[2]](#source-2).
 
 I liked the highlight detail of the #0 best when digitally inverted, especially compared to the pictured print calibration chart. This became my 'default' filter in further testing.
 
@@ -118,7 +118,7 @@ SRC: assets/process/paper-negative/test2.png
 Caption: the second paper negative test, encompassing a few more lighting conditions. 
 
 
- Outdoors, the higher blue light present in bright sunlight made a 1-stop underexposure (relative to meter readings at ISO 6) render best. To investigate the reciprocity failure so common in film, I found a poorly-lit scene at night on the under-construction White Hall. Exposed as metered, the combination of warmer interior and lamppost lighting and low-intensity reciprocity failure contributed to a Very Thin Negative. While there was some information in the highlights (extracted with significant digital post-processing), the final image is clearly distinct in quality from those taken during the day. If, during a masochist streak, I ever decide to shoot paper at nighttime again, I will increase my exposure by a few stops to accommodate the paper's lack of sensitivity to the red end of the visible spectrum and its low intensity reciprocity failure. 
+ Outdoors, the higher blue light present in bright sunlight made a 1-stop underexposure (relative to meter readings at ISO 6) render best. To investigate the reciprocity failure so common in film, I found a poorly-lit scene at night on the under-construction White Hall. Exposed as metered, the combination of warmer interior and lamppost lighting and low-intensity reciprocity failure contributed to a Very Thin Negative. While there was some information in the highlights (extracted with significant digital post-processing), the final imaage is clearly distinct in quality from those taken during the day. If, during a masochist streak, I ever decide to shoot paper at nighttime again, I will increase my exposure by a few stops to accommodate the paper's lack of sensitivity to the red end of the visible spectrum and its low intensity reciprocity failure. 
 
 SRC: assets/process/paper-negative/white-negative.png
 Caption: The negative produced by image number 4 above. Note the lack of any information in the highlights discernible to the naked eye. 
@@ -129,16 +129,16 @@ Eagle-eyed viewers might notice the row of flat, thin images below. To investiga
 ## A Diversion: What Strobe Guide Number Really Means 
 
 
-I shot the above scene with an on-camera Yongnuo YN560 speedlight rated at a maximum power guide number ($\text{GN}$) of 58m at ISO 100 and 135mm zoom [[5]](#source-5). At 50mm zoom (approximately the full-frame equivalent of the 80mm lens I have attached to the Hasselblad), the GN reduces to 42m. I
+I shot the above scene with an on-camera Yongnuo YN560 speedlight rated at a maximum power guide number ($\text(GN)$) of 58m at ISO 100 and 135mm zoom [[5]](#source-5). At 50mm zoom (approximately the full-frame equivalent of the 80mm lens I have attached to the Hasselblad), the GN reduces to 42m. I
 
-SRC: assets/process/paper-negative/strobe-setup.png
-Caption: The Hasselblad 500C and flash. For those who would like to replicate this setup, ensure that you purchase a PC-to-PC strobe sync cable, *not* a PC to 2.5mm cable, or any other combination.
+<!-- TODO: gear flick
+Caption: The Hasselblad 500C and flash. For those who would like to replicate this setup, ensure that you purchase a PC-to-PC strobe sync cable, *not* a PC to 2.5mm cable, or any other combination.  -->
 
  We can express the guide number in terms of the subject's distance and the lens' f-stop: 
 $$
     \text{GN} = \text{Distance} \times \text{f-stop}.
 $$
-In this section, I take flash power (tracked by the guide number) as the variable of interest in making a proper exposure, and consider f/stop and subject distance to be fixed. I believe that this provides an easier framework to make artistic choices about framing and depth-of field before ensuring that a proper exposure is made, but f/stop and subject distance are certainly valid knobs to turn in search of the right exposure. 
+In this section, I take flash power (tracked by the guide number) as the variable of interest in making a proper exposure, and consider f/stop and subject distance to be fixed. I believe that this provides an easier framework to make artistic choices about framing and depth-of field before ensuring that a proper exposure is made, but f-stop and subject distance are certainly valid knobs to turn in search of the right exposure. 
 
 In some cases, flash power can be considered to take the place of shutter speed in the traditional exposure triangle, depending on ambient exposure value and camera sync speeds [[6]](#source-6). Because a flash fires so quickly (usually 1/1000 of a second or faster), the intensity of light captured by the camera's sensor from a flash is relatively independent of shutter speed. To use the common 'bucket of water' analogy for exposure, the light from a flash is less like a faucet with a constant flow of water than it is someone dumping another bucket into yours, instantaneously. To simplify the following section further, we take the ambient exposure value of the scene (e.g. the flow rate of the 'faucet' times the exposure time) to be low enough compared to the flash intensity (a function of power level, tracked by guide number) to be negligible. In reality, ambient exposure is one of many factors to be taken into account when lighting your scene. 
 
@@ -148,7 +148,7 @@ Back to the story.
 F-stop, as the ratio of the lens' focal length to its aperture diameter, is unitless, meaning that GN is expressed in units of distance. For example, if shooting a subject 4 meters away at f/8 and ISO 100, you would calculate a guide number of 
 
 $$
-\mathrm{GN}_{\text{desired}} = 4 \mathrm{m} \times 8 = 24 \mathrm{m}
+\text(GN, desired) = 4 \si(meters) \times 8 = 24 \si(meters)
 $$
 
 But wait! My flash has a guide number of 42m! Where do I go from here? 
@@ -169,7 +169,7 @@ $$
 \frac{P_2}{P_1} = \left(\frac{\text{GN}_2}{\text{GN}_1}\right)^2
 $$
 
-So if your flash is rated $\mathrm{GN}_{\text{full}} = 42\,\mathrm{m}$ at full power, and you only need $\mathrm{GN}_{\text{desired}} = 24\,\mathrm{m}$, the required power fraction is:
+So if your flash is rated $\text{GN}_\text{full} = 42\si(m)$ at full power, and you only need $\text{GN}_\text{need} = 24\si(m)$, the required power fraction is:
 
 $$
 \frac{P_\text{need}}{P_\text{full}} =
@@ -195,20 +195,20 @@ Given my GN at ISO 100 of 42m, a subject distance of 1m, and an f-stop of 4, I h
 From the above equations, I can calculate my desired GN 
 
 $$
-\mathrm{GN}_{\text{desired}} = 1~\mathrm{m} \times 4 = 4\,\mathrm{m}
+\text{GN, desired} = 1~\si(meters) \times 4 = 4\si(meters)
 $$
 
 and convert my flash's full-power GN to the nominal ISO (6) of my photopaper
 
 $$
-\mathrm{GN}_{\text{full}} = 42 \times \sqrt(\frac{\text{ISO 6}}{\text{ISO 100}}) \approx 10.3.
+\text{GN, full} = 42 \times \sqrt(\frac{\text{ISO 6}}{\text{ISO 100}}) \approx 10.3.
 $$
 
 My desired power fraction $\text{P}$ is then 
 
 $$
 
-\text{P} = \left(\frac{\mathrm{GN}_{\text{desired}}}{\mathrm{GN}_{\text{full}}}\right)^2 = \left(\frac{4}{10.3}\right)^2 \approx 1/6.
+\text{P} = (\frac{\text{GN, desired}}{\text{GN, full}})^2 = (\frac{4}{10.3})^2 \approx 1/6.
 
 $$
 
@@ -237,7 +237,7 @@ I pre-flashed half of the negatives under test with this baseline, and left the 
 As another variable, I tested the level of ambient exposure, noting that leaf shutters of Hasselblad V mount lenses allow flash sync at all speeds. It was difficult to determine any effect of pre-flashing, so I will likely abandon it in the future. However, increasing ambient exposure increased the luminance of the image's background (a blackboard) as expected.
 
 
-## Enlargement
+## Optical Enlargement
 
 Armed with a formula for producing workable paper negatives, I finally set off to the final leg of the race: making analog prints. 
 
@@ -246,13 +246,13 @@ I enlarged the negative marked in Test 3 with the emulsion facing downwards in m
 SRC: assets/process/paper-negative/enlarged.png
 Caption: An enlarged paper negative, printed on 8"x10" Ilford Multigrade RC Pearl and developed in standard chemistry [[3]](#source-3)
 
-In a straight print on 8"x10" paper, I found that I had to increase contrast to #4 to reach maximum density and maintain highlights close to paper-white. The doubled exposure time required of Ilford Multigrade filters #4 and #5 compared to #00 - #3 [[2]](#source-2), combined with the light loss through the negative's paper backing, resulted in a significantly more intense exposure (f/5.6, 40 seconds) than a standard 8"x10" print. The wide-open aperture isn't ideal for the sharpness of the final print, but I doubt that the lens was the bottleneck in this case. It's likely that the resolution and emulsion of the negative itself was the cause of this fairly unsharp print. 
+In a straight print on 8"x10" paper, I found that I had to increase contrast to #4 to reach maximum density and maintain highlights close to paper-white. The doubled exposure time required of Ilford Multigrade filters #4 and #5 compared to #00 - #3 [[2]](#source-2), combined with the light loss through the negagtive's paper backing, resulted in a significantly more intense exposure (f/5.6, 40 seconds) than a standard 8"x10" print. The wide-open aperture isn't ideal for the sharpness of the final print, but I doubt that the lens was the bottleneck in this case. It's likely that the resolution and emulsion of the negative itself was the cause of this fairly unsharp print. 
 
 
 ## Conclusions
 
 
-Ultimately, shooting paper negatives on a medium-format system is a deliberate technical regression that has made me think more deeply about the photographic process. My primary hurdle wasn't the inherent handicap of low sensitivity, but the spectral mismatch between the paper and the world, requiring me to consider the color of my environment in a way I hadn't experienced with standard panchromatic black and white film, or even color digital photography.
+Shooting paper negatives on a medium-format system is a deliberate technical regression that has made me think more deeply about the photographic process. My primary hurdle wasn't the inherent handicap of low sensitivity, but the spectral mismatch between the paper and the world, requiring me to consider the color of my environment in a way I hadn't experienced with standard panchromatic black and white film, or even color digital photography.
 
 The most interesting technical conclusion I observed, especially as a photographer who uses strobes extensively, was the high-intensity reciprocity compensation required for a workable exposure with them. Two stops was enough for my speedlight, but I'll need to test a wider range of equipment to verify the bounds of Ilford Multigrade RC's reciprocity. 
 
@@ -285,24 +285,26 @@ I also intend to make more enlargements of my paper negatives. 8"x10" paper seem
 
 ## Sources
 
-<a id="source-1"></a>[1] Ian Gamester, [https://www.ilfordphoto.com/paper-negatives/](https://www.ilfordphoto.com/paper-negatives/). Tim Layton, [https://timlaytonfineart.com/2024/09/07/the-calotype-paper-negative/](https://timlaytonfineart.com/2024/09/07/the-calotype-paper-negative/). Ethan Doyle, [https://ethandoyleprojects.com/8x10-paper-negatives](https://ethandoyleprojects.com/8x10-paper-negatives). 
+<a id="source-1"></a>[1] Ian Gamester, https://www.ilfordphoto.com/paper-negatives/. Tim Layton, https://timlaytonfineart.com/2024/09/07/the-calotype-paper-negative/. Ethan Doyle, https://ethandoyleprojects.com/8x10-paper-negatives. 
 
-<a id="source-2"></a>[2] Ilford Multigrade RC Datasheet, [https://www.ilfordphoto.com/wp/wp-content/uploads/2021/01/MULTIGRADE-RC-Papers-J20.pdf](https://www.ilfordphoto.com/wp/wp-content/uploads/2021/01/MULTIGRADE-RC-Papers-J20.pdf)
+<a id="source-2"></a>[2] Ilford Multigrade RC Datasheet, https://www.ilfordphoto.com/wp/wp-content/uploads/2021/01/MULTIGRADE-RC-Papers-J20.pdf
 
 <a id="source-3"></a>[3] Unless otherwise specified, standard chemistry refers to Ilford Multigrade Developer 1:9, Ilford Rapid Fix 1:9, Ilfostop XX:XX, for 120 seconds, 30 seconds, and 120 seconds, respectively. 
 
-<a id="source-4"></a>[4] Ilford Multigrade Contrast Control, [https://www.ilfordphoto.com/wp/wp-content/uploads/2017/03/Contrast-control-for-Ilford-Multigrade.pdf](https://www.ilfordphoto.com/wp/wp-content/uploads/2017/03/Contrast-control-for-Ilford-Multigrade.pdf)
+<a id="source-4"></a>[4] Ilford Multigrade Contrast Control, https://www.ilfordphoto.com/wp/wp-content/uploads/2017/03/Contrast-control-for-Ilford-Multigrade.pdf
 
-<a id="source-5"></a>[5] Yongnuo YN560 User Manual, [https://www.yongnuo.fr/wp-content/uploads/notices/YN-560_en.pdf](https://www.yongnuo.fr/wp-content/uploads/notices/YN-560_en.pdf)
+<a id="source-5"></a>[5] Yongnuo YN560 User Manual, https://www.yongnuo.fr/wp-content/uploads/notices/YN-560_en.pdf
 
-<a id="source-6"></a>[6] Flash Sync Speed, [https://www.newschoolers.com/news/read/Flash-Sync-Speed-Explained](https://www.newschoolers.com/news/read/Flash-Sync-Speed-Explained) 
+<a id="source-6"></a>[6] Flash Sync Speed, https://www.newschoolers.com/news/read/Flash-Sync-Speed-Explained 
 
-[7] Ilford Multigrade IV RC Datasheet, [https://estudiocasanueva.com.ar/archivo/Imgivrc.pdf](https://estudiocasanueva.com.ar/archivo/Imgivrc.pdf)
+[7] Ilford Multigrade IV RC Datasheet, https://estudiocasanueva.com.ar/archivo/Imgivrc.pdf
 
-[8] Ilford Ilfospeed RC Deluxe Datasheet, [https://www.ilfordphoto.com/amfile/file/download/file/1893/product/1440/](https://www.ilfordphoto.com/amfile/file/download/file/1893/product/1440/)
+[8] Ilford Ilfospeed RC Deluxe Datasheet, https://www.ilfordphoto.com/amfile/file/download/file/1893/product/1440/
 
 [9] Tungsten Spectrogram, Thoms, Lars-Jochen & Girwidz, Raimund. (2013). Experimenting from a Distance: Optical Spectrometry via the Internet. 
 
 [10] Daylight Spectrogram, Kotzabasis, Kiriakos & Navakoudis, Eleni & Vakalounakis, Demetrios. (2014). Photobiological Control of Crop Production and Plant Diseases.
 
-[11] Pre-flashing Photographic Paper, [https://www.photrio.com/forum/threads/pre-flashing-paper.97777/](https://www.photrio.com/forum/threads/pre-flashing-paper.97777/)
+[11] Pre-flashing Photographic Paper, https://www.photrio.com/forum/threads/pre-flashing-paper.97777/
+
+
