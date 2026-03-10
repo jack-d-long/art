@@ -11,6 +11,9 @@
       --paper: #F1F1F1;
       --back-edge-offset: 50px;
       --back-blend-source: #CCC5C0;
+      --canvas-unit-count: 3;
+      --canvas-gap-x: 100px;
+      --canvas-gap-y: 50px;
     }
 
     body {
@@ -24,7 +27,7 @@
     }
 
     h1 {
-      margin: 0 0 24px;
+      margin: 0 0 50px;
       font-size: clamp(48px, 10vw, 100px);
     }
 
@@ -47,31 +50,37 @@
     }
 
     .grid {
-      column-count: 3;
-      column-gap: 100px;
+      position: relative;
     }
 
-    .grid img {
+    .canvas-item {
+      position: absolute;
+      margin: 0;
+    }
+
+    .canvas-item img {
       width: 100%;
       height: auto;
       display: block;
+      box-sizing: border-box;
       background: var(--paper);
       border: 24px solid var(--paper);
       box-shadow: 0 14px 14px rgba(0, 0, 0, 0.22);
-      margin: 0 0 50px;
-      break-inside: avoid;
-      -webkit-column-break-inside: avoid;
     }
 
     @media (max-width: 900px) {
-      .grid {
-        column-count: 2;
+      :root {
+        --canvas-unit-count: 2;
+        --canvas-gap-x: 32px;
+        --canvas-gap-y: 36px;
       }
     }
 
     @media (max-width: 600px) {
-      .grid {
-        column-count: 1;
+      :root {
+        --canvas-unit-count: 1;
+        --canvas-gap-x: 0px;
+        --canvas-gap-y: 28px;
       }
     }
   </style>
@@ -80,20 +89,105 @@
   <a class="back-link" href="/">back</a>
   <h1>Portrait</h1>
   <div class="grid">
-    <img src="/assets/portrait/IMG_6320.jpg" alt="IMG 6320" />
-    <img src="/assets/portrait/IMG_6336.jpg" alt="IMG 6336" />
-    <img src="/assets/portrait/IMG_6426.jpg" alt="IMG 6426" />
-    <img src="/assets/portrait/kingkwabs-epk-0907-2.jpg" alt="King Kwabs EPK 0907 2" />
-    <img src="/assets/portrait/IMG_6536.jpg" alt="IMG 6536" />
-    <img src="/assets/portrait/IMG_6570.jpg" alt="IMG 6570" />
-    <img src="/assets/portrait/kingkwabs-epk-1134.jpg" alt="King Kwabs EPK 1134" />
-    <img src="/assets/portrait/IMG_6575.jpg" alt="IMG 6575" />
-    <img src="/assets/portrait/IMG_6580.jpg" alt="IMG 6580" />
-    <img src="/assets/portrait/gramma.jpg" alt="Gramma" />
-    <img src="/assets/portrait/kingkwabs-epk-film1.jpg" alt="King Kwabs EPK Film 1" />
-    <img src="/assets/portrait/grampa_plane.jpg" alt="Grampa Plane" />
-    <img src="/assets/portrait/jack_nonchalant.jpg" alt="Jack Nonchalant" />
-    <img src="/assets/portrait/stallone.jpg" alt="Stallone" />
+    <figure class="canvas-item" data-span="1"><img src="/assets/portrait/kingkwabs-epk-1134.jpg" alt="King Kwabs EPK 1134" /></figure>
+    <figure class="canvas-item" data-span="2"><img src="/assets/portrait/kingkwabs-epk-0907-2.jpg" alt="King Kwabs EPK 0907 2" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/portrait/kingkwabs-epk-film1.jpg" alt="King Kwabs EPK Film 1" /></figure>
+
+    <figure class="canvas-item" data-span="1"><img src="/assets/portrait/IMG_6320.jpg" alt="IMG 6320" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/portrait/IMG_6336.jpg" alt="IMG 6336" /></figure>
+        <figure class="canvas-item" data-span="1"><img src="/assets/portrait/IMG_6575.jpg" alt="IMG 6575" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/portrait/IMG_6580.jpg" alt="IMG 6580" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/portrait/IMG_6426.jpg" alt="IMG 6426" /></figure>
+
+    <figure class="canvas-item" data-span="1"><img src="/assets/portrait/IMG_6536.jpg" alt="IMG 6536" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/portrait/IMG_6570.jpg" alt="IMG 6570" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/portrait/grampa_plane.jpg" alt="Grampa Plane" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/portrait/jack_nonchalant.jpg" alt="Jack Nonchalant" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/portrait/stallone.jpg" alt="Stallone" /></figure>
+    <figure class="canvas-item" data-span="1"><img src="/assets/portrait/gramma.jpg" alt="Gramma" /></figure>
+
   </div>
+  <script>
+    const grid = document.querySelector(".grid");
+    const items = Array.from(grid.querySelectorAll(".canvas-item"));
+
+    const readPxVar = (name, fallback) => {
+      const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      const parsed = Number.parseFloat(raw);
+      return Number.isFinite(parsed) ? parsed : fallback;
+    };
+
+    const readIntVar = (name, fallback) => {
+      const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      const parsed = Number.parseInt(raw, 10);
+      return Number.isFinite(parsed) ? parsed : fallback;
+    };
+
+    const relayoutCanvas = () => {
+      const cols = Math.max(1, readIntVar("--canvas-unit-count", 3));
+      const gapX = readPxVar("--canvas-gap-x", 100);
+      const gapY = readPxVar("--canvas-gap-y", 50);
+      const unitWidth = (grid.clientWidth - gapX * (cols - 1)) / cols;
+
+      if (!Number.isFinite(unitWidth) || unitWidth <= 0) {
+        return;
+      }
+
+      const heights = Array(cols).fill(0);
+
+      items.forEach((item) => {
+        const requestedSpan = Number.parseInt(item.dataset.span || "1", 10) || 1;
+        const span = Math.max(1, Math.min(cols, requestedSpan));
+        const img = item.querySelector("img");
+        const ratio = img && img.naturalWidth > 0 ? img.naturalHeight / img.naturalWidth : 1;
+
+        let bestStart = 0;
+        let bestTop = Number.POSITIVE_INFINITY;
+
+        for (let start = 0; start <= cols - span; start += 1) {
+          const top = Math.max(...heights.slice(start, start + span));
+          if (top < bestTop) {
+            bestTop = top;
+            bestStart = start;
+          }
+        }
+
+        const width = unitWidth * span + gapX * (span - 1);
+        const height = Math.max(1, width * ratio);
+        const left = bestStart * (unitWidth + gapX);
+
+        item.style.left = `${left}px`;
+        item.style.top = `${bestTop}px`;
+        item.style.width = `${width}px`;
+
+        const newHeight = bestTop + height + gapY;
+        for (let i = bestStart; i < bestStart + span; i += 1) {
+          heights[i] = newHeight;
+        }
+      });
+
+      const canvasHeight = Math.max(...heights, 0);
+      grid.style.height = `${Math.max(0, canvasHeight - gapY)}px`;
+    };
+
+    let rafId = 0;
+    const scheduleRelayout = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(relayoutCanvas);
+    };
+
+    items.forEach((item) => {
+      const img = item.querySelector("img");
+      if (!img) return;
+      if (!img.complete) {
+        img.addEventListener("load", scheduleRelayout);
+        img.addEventListener("error", scheduleRelayout);
+      }
+    });
+
+    window.addEventListener("resize", scheduleRelayout);
+    window.addEventListener("load", scheduleRelayout);
+    scheduleRelayout();
+  </script>
 </body>
 </html>
