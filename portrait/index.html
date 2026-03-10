@@ -14,6 +14,7 @@
       --canvas-unit-count: 3;
       --canvas-gap-x: 100px;
       --canvas-gap-y: 50px;
+      --image-frame-border: 24px;
     }
 
     body {
@@ -64,7 +65,7 @@
       display: block;
       box-sizing: border-box;
       background: var(--paper);
-      border: 24px solid var(--paper);
+      border: var(--image-frame-border) solid var(--paper);
       box-shadow: 0 14px 14px rgba(0, 0, 0, 0.22);
     }
 
@@ -81,6 +82,7 @@
         --canvas-unit-count: 1;
         --canvas-gap-x: 0px;
         --canvas-gap-y: 28px;
+        --image-frame-border: clamp(8px, 4vw, 16px);
       }
     }
   </style>
